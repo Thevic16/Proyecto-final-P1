@@ -99,6 +99,6 @@ public class Reporte {
 		this.vertices = vertices;
 	}
 	
-	
+	//c
 
 }

@@ -1,7 +1,7 @@
 package logico;
 
 import java.util.ArrayList;
-
+//c
 //Clase controladora
 public class Centro {
 	private ArrayList<Prisma>primas;
