@@ -1,5 +1,7 @@
 package logico;
 
+import java.util.ArrayList;
+
 public abstract class Prisma {
 	protected float altura;
 	protected Vertice v1;
@@ -30,6 +32,9 @@ public abstract class Prisma {
 	public void setV2(Vertice v2) {
 		this.v2 = v2;
 	}
+	
+	public abstract ArrayList<Vertice> getVertices();
+
 	
 	
 
