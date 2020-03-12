@@ -35,6 +35,9 @@ public abstract class Prisma {
 	
 	public abstract ArrayList<Vertice> getVertices();
 
+	public float distanciaVertices(Vertice va,Vertice vb) {
+		return (float) Math.sqrt(Math.pow((vb.getX()-va.getX()), 2)+Math.pow((vb.getY()-va.getY()), 2));
+	}
 	
 	
 

@@ -3,11 +3,13 @@ package logico;
 import java.util.ArrayList;
 
 public class Cuadrado extends Prisma {
-
+	
+	
 	public Cuadrado(float altura, Vertice v1, Vertice v2) {
 		super(altura, v1, v2);
 	}
-
+	
+	
 	/*
 	Metodo: getVertices.
 	Argumentos: no tiene.
@@ -25,7 +27,7 @@ public class Cuadrado extends Prisma {
 	}
 	
 	
-	public ArrayList<Vertice> verticesCuadrado(Vertice v1, Vertice v2){
+	public ArrayList<Vertice> verticesCuadrado(){
 		
 		ArrayList<Vertice>aux = new ArrayList<Vertice>();
 		aux.add(v1);
@@ -34,14 +36,19 @@ public class Cuadrado extends Prisma {
 		Vertice v3 = null;
 		Vertice v4 = null;
 		
-		if(isOpuesto(v1,v2)) {
+		if(isOpuesto()) {
 			v3 = new Vertice(v1.getX(), v2.getY());
 			v4 = new Vertice(v2.getX(), v1.getY());
 		}
-		else if (isParalelo(v1,v2) && !(areIguales(v1, v2))) {
-			v3 = new Vertice(v1.getY(), v1.getX());
-			v4 = new Vertice(v2.getY(), v2.getX()); 
+		else if (isIgualY()) {
+			v3 = new Vertice(v1.getX(),v1.getY()+distanciaVertices(v1, v2));
+			v4 = new Vertice(v2.getX(),v2.getY()+distanciaVertices(v1, v2)); 
 		}
+		else if (isIgualX()) {
+			v3 = new Vertice(v1.getX()+distanciaVertices(v1, v2),v1.getY());
+			v4 = new Vertice(v2.getX()+distanciaVertices(v1, v2),v2.getY()); 
+		}
+		
 		aux.add(v3);
 		aux.add(v4);
 		
@@ -49,22 +56,30 @@ public class Cuadrado extends Prisma {
 		
 	}
 
-	private boolean isParalelo(Vertice v1, Vertice v2) {
+	private boolean isIgualX() {
 		// TODO Auto-generated method stub
-		boolean paralelo = false;
+		boolean igual = false;
 		
 		if(v1.getX() == v2.getX()) {
-			paralelo = true;
-		}
-		if(v1.getY() == v2.getY()) {
-			paralelo = true;
+			igual = true;
 		}
 		
-		return paralelo;
+		return igual;
+	}
+	
+	private boolean isIgualY() {
+		// TODO Auto-generated method stub
+		boolean igual = false;
+		
+		if(v1.getY() == v2.getY()) {
+			igual = true;
+		}
+		
+		return igual;
 	}
 
 	
-	private boolean isOpuesto(Vertice v1, Vertice v2) {
+	private boolean isOpuesto() {
 		boolean opuesto = false;
 		
 		if(v1.getX() == v2.getY() && v2.getX() == v1.getY()) {
@@ -75,14 +90,7 @@ public class Cuadrado extends Prisma {
 	}
 	
 	
-	public static boolean areIguales(Vertice v1, Vertice v2) {
-		boolean iguales = false;
-		
-		if(v1.getX() == v2.getX() && v1.getY() == v2.getY()) {
-			iguales = true;
-		}
-		
-		return iguales;
-	}
+	
+
 
 }
