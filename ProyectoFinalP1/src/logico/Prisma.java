@@ -35,6 +35,16 @@ public abstract class Prisma {
 	
 	public abstract ArrayList<Vertice> getVertices();
 
+	/*
+	Metodo: distanciaVertices.
+	Argumentos: vertice va y vertice vb.
+	Objetivo: determinar la distancia entre dos vertices dados.
+	Retorno: float
+	
+	-Esta es una funcion auxiliar que nos sirve para determinar la distancia entre dos vertices selecionardos de una clase,
+	es decir te permite seleccionar entre cuales vertites deseas ver la distancia no esta predefinido.
+	
+	*/
 	public float distanciaVertices(Vertice va,Vertice vb) {
 		return (float) Math.sqrt(Math.pow((vb.getX()-va.getX()), 2)+Math.pow((vb.getY()-va.getY()), 2));
 	}
