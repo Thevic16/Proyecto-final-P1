@@ -26,7 +26,12 @@ public class Cuadrado extends Prisma {
 		return aux;
 	}
 	
-	
+	/*
+	Metodo: verticesCuadrado.
+	Argumentos: no tiene.
+	Objetivo: obtener todos los vertices del cuadrado.
+	Retorno: ArrayList<Vertice>
+	*/
 	public ArrayList<Vertice> verticesCuadrado(){
 		
 		ArrayList<Vertice>aux = new ArrayList<Vertice>();
@@ -56,6 +61,12 @@ public class Cuadrado extends Prisma {
 		
 	}
 
+	/*
+	Metodo: isIgualX.
+	Argumentos: no tiene.
+	Objetivo: determinar los vertices del cuadrados son iguales en el eje x
+	Retorno: boolean
+	*/
 	private boolean isIgualX() {
 		// TODO Auto-generated method stub
 		boolean igual = false;
@@ -67,6 +78,12 @@ public class Cuadrado extends Prisma {
 		return igual;
 	}
 	
+	/*
+	Metodo: isIgualY.
+	Argumentos: no tiene.
+	Objetivo: determinar los vertices del cuadrados son iguales en el eje y
+	Retorno: boolean
+	*/
 	private boolean isIgualY() {
 		// TODO Auto-generated method stub
 		boolean igual = false;
@@ -78,7 +95,12 @@ public class Cuadrado extends Prisma {
 		return igual;
 	}
 
-	
+	/*
+	Metodo: isOpuesto.
+	Argumentos: no tiene.
+	Objetivo: determinar si los vertices ingresados en el usuario son opuestos.
+	Retorno: boolean
+	*/
 	private boolean isOpuesto() {
 		boolean opuesto = false;
 		
