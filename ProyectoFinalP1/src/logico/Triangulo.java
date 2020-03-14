@@ -33,6 +33,17 @@ public class Triangulo extends Prisma {
 		this.vh = vh;
 	}
 	
+	@Override
+	public float perimetro() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public float areaBase() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
 	
 
 }

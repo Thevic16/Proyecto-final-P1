@@ -34,6 +34,8 @@ public abstract class Prisma {
 	}
 	
 	public abstract ArrayList<Vertice> getVertices();
+	public abstract float perimetro();
+	public abstract float areaBase();
 
 	/*
 	Metodo: distanciaVertices.
@@ -49,6 +51,16 @@ public abstract class Prisma {
 		return (float) Math.sqrt(Math.pow((vb.getX()-va.getX()), 2)+Math.pow((vb.getY()-va.getY()), 2));
 	}
 	
+	public float areaLateral() {
+		return perimetro()*altura;
+	}
 	
+	public float areaTotal() {
+		return areaLateral() + 2*areaBase();
+	}
+	
+	public float volumen() {
+		return areaBase()*altura;
+	}
 
 }

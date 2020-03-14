@@ -110,9 +110,39 @@ public class Cuadrado extends Prisma {
 		
 		return opuesto;
 	}
+
+
+	@Override
+	public float perimetro() {
+		return distanciaVertices(v1, v2)*4;
+	}
+
+
+	@Override
+	public float areaBase() {
+		return (float) Math.pow(distanciaVertices(v1, v2), 2);
+	}
 	
 	
+	/*
+	Metodo: distanciaVertices.
+	Argumentos: vertice va y vertice vb.
+	Objetivo: determinar la distancia entre dos vertices dados.
+	Retorno: float
 	
+	-Esta es una funcion auxiliar que nos sirve para determinar la distancia entre dos vertices selecionardos de una clase,
+	es decir te permite seleccionar entre cuales vertites deseas ver la distancia no esta predefinido.
+	
+	*/
+	public float distanciaVertices(Vertice va,Vertice vb) {
+		float distancia = super.distanciaVertices(v1, v2);
+		
+		if(isOpuesto()) {
+			distancia = (float) (distancia/Math.sqrt(2));
+		}
+		
+		return distancia;
+	}
 
 
 }

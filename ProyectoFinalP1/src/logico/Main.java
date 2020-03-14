@@ -6,8 +6,8 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Vertice v1 = new Vertice(12,3);
-		Vertice v2 = new Vertice(6,3);
+		Vertice v1 = new Vertice(-1,2);
+		Vertice v2 = new Vertice(-3,2);
 		
 		Cuadrado C1 = new Cuadrado(2, v1, v2);
 		
@@ -17,7 +17,13 @@ public class Main {
 			System.out.println(vertice.getX()+","+vertice.getY());
 			System.out.println(" ");
 		}
-
+		
+		System.out.println("area de la base de prisma cuadrado: "+C1.areaBase());
+		System.out.println("area lateral de prisma cuadrado: "+C1.areaLateral());
+		System.out.println("area total de prisma cuadrado: "+C1.areaTotal());
+		System.out.println("volumen de prisma cuadrado: "+C1.volumen());
+		
+		System.out.println("Distancia entre vertices: "+C1.distanciaVertices(v1, v2));
 	}
 
 }

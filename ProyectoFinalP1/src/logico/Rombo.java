@@ -41,6 +41,17 @@ public class Rombo extends Prisma {
 		this.v4 = v4;
 	}
 	
+	@Override
+	public float perimetro() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public float areaBase() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
 	
 
 }
