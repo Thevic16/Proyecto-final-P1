@@ -22,21 +22,6 @@ public class Cuadrado extends Prisma {
 		ArrayList<Vertice>aux = new ArrayList<Vertice>();
 		aux.add(v1);
 		aux.add(v2);
-		
-		return aux;
-	}
-	
-	/*
-	Metodo: verticesCuadrado.
-	Argumentos: no tiene.
-	Objetivo: obtener todos los vertices del cuadrado.
-	Retorno: ArrayList<Vertice>
-	*/
-	public ArrayList<Vertice> verticesCuadrado(){
-		
-		ArrayList<Vertice>aux = new ArrayList<Vertice>();
-		aux.add(v1);
-		aux.add(v2);
 		//vertices que queremos determinar. 
 		Vertice v3 = null;
 		Vertice v4 = null;
@@ -58,8 +43,8 @@ public class Cuadrado extends Prisma {
 		aux.add(v4);
 		
 		return aux;
-		
 	}
+	
 
 	/*
 	Metodo: isIgualX.
