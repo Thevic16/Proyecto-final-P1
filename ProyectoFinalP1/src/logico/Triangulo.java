@@ -36,14 +36,23 @@ public class Triangulo extends Prisma {
 	@Override
 	public float perimetro() {
 		// TODO Auto-generated method stub
-		return 0;
+		return getBaseTriangulo() + distanciaVertices(v1, vh)*2;
 	}
 	@Override
 	public float areaBase() {
 		// TODO Auto-generated method stub
-		return 0;
+		return (getBaseTriangulo()*getAlturaTriangulo())/2;
 	}
 	
+	public float getAlturaTriangulo() {
+		return (float) (Math.sin(getAnguloTriangulo())*distanciaVertices(v1, vh));
+	}
 	
-
+	public float getBaseTriangulo() {
+		return (float) (distanciaVertices(v1, v2));
+	}
+	
+	private float getAnguloTriangulo() {
+		return (float) Math.acos((getBaseTriangulo()/2)/distanciaVertices(v1, vh));
+	}
 }

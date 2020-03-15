@@ -37,13 +37,13 @@ public class Rectangulo extends Prisma {
 	@Override
 	public float perimetro() {
 		// TODO Auto-generated method stub
-		return getBaseArea()*2 +getAlturaArea()*2;
+		return getBaseRectangulo() *2 +getAlturaRectangulo()*2;
 	}
 
 	@Override
 	public float areaBase() {
 		// TODO Auto-generated method stub
-		return getBaseArea()*getAlturaArea();
+		return getBaseRectangulo() *getAlturaRectangulo();
 	}
 	
 
@@ -65,7 +65,7 @@ public class Rectangulo extends Prisma {
 	}
 	
 	
-	public float getAlturaArea() {
+	public float getAlturaRectangulo() {
 		ArrayList<Vertice>aux = getVertices();
 		float altura =0;
 		
@@ -102,7 +102,7 @@ public class Rectangulo extends Prisma {
 		return iguales;
 	}
 	
-	public float getBaseArea() {
+	public float getBaseRectangulo() {
 		ArrayList<Vertice>aux = getVertices();
 		float base =0;
 		
