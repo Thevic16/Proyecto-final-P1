@@ -44,14 +44,33 @@ public class Triangulo extends Prisma {
 		return (getBaseTriangulo()*getAlturaTriangulo())/2;
 	}
 	
+	
+	/*
+	Metodo: getAlturaTriangulo().
+	Argumentos: no tiene.
+	Objetivo: obtener la altura del triangulo de la base del prisma.
+	Retorno: float
+	*/
 	public float getAlturaTriangulo() {
 		return (float) (Math.sin(getAnguloTriangulo())*distanciaVertices(v1, vh));
 	}
 	
+	/*
+	Metodo: getBaseTriangulo().
+	Argumentos: no tiene.
+	Objetivo: obtener la base del triangulo.
+	Retorno: float
+	*/
 	public float getBaseTriangulo() {
 		return (float) (distanciaVertices(v1, v2));
 	}
 	
+	/*
+	Metodo: getAnguloTriangulo().
+	Argumentos: no tiene.
+	Objetivo: obtener el angulo del triangulo, pero esta funcion solo aplica si el triangulo es isósceles.
+	Retorno: float
+	*/
 	private float getAnguloTriangulo() {
 		return (float) Math.acos((getBaseTriangulo()/2)/distanciaVertices(v1, vh));
 	}
