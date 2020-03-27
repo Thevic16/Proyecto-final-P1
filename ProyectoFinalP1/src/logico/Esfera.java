@@ -3,8 +3,9 @@ package logico;
 public class Esfera extends Figura {
 	private float radio;
 
-	public Esfera() {
-		// TODO Auto-generated constructor stub
+	public Esfera(String codigo, float radio) {
+		super(codigo);
+		this.radio = radio;
 	}
 
 	@Override
@@ -18,6 +19,8 @@ public class Esfera extends Figura {
 		// TODO Auto-generated method stub
 		return (float) (Math.PI*Math.pow(radio, 3)*4/3);
 	}
+
+
 
 	public float getRadio() {
 		return radio;

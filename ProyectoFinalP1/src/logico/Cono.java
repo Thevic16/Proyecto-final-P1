@@ -4,10 +4,13 @@ public class Cono extends Figura {
 	private float radio;
 	private float altura;
 
-	public Cono() {
-		// TODO Auto-generated constructor stub
+	
+	public Cono(String codigo, float radio, float altura) {
+		super(codigo);
+		this.radio = radio;
+		this.altura = altura;
 	}
-
+	
 	@Override
 	public float area() {
 		// TODO Auto-generated method stub

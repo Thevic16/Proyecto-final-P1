@@ -3,9 +3,11 @@ package logico;
 public class Cubo extends Figura {
 	private float tamano;
 
-	public Cubo() {
-		// TODO Auto-generated constructor stub
+	public Cubo(String codigo, float tamano) {
+		super(codigo);
+		this.tamano = tamano;
 	}
+
 
 	@Override
 	public float area() {

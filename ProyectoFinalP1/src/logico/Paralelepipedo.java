@@ -5,8 +5,12 @@ public class Paralelepipedo extends Figura {
 	private float altura;
 	private float anchura;
 
-	public Paralelepipedo() {
-		// TODO Auto-generated constructor stub
+
+	public Paralelepipedo(String codigo, float longitud, float altura, float anchura) {
+		super(codigo);
+		this.longitud = longitud;
+		this.altura = altura;
+		this.anchura = anchura;
 	}
 
 	@Override

@@ -4,8 +4,10 @@ public class Cilindro extends Figura {
 	protected float radio;
 	protected float altura;
 
-	public Cilindro() {
-		// TODO Auto-generated constructor stub
+	public Cilindro(String codigo, float radio, float altura) {
+		super(codigo);
+		this.radio = radio;
+		this.altura = altura;
 	}
 
 	@Override
@@ -46,6 +48,8 @@ public class Cilindro extends Figura {
 	public void setAltura(float altura) {
 		this.altura = altura;
 	}
+
+
 	
 
 }
