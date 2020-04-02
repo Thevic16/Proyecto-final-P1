@@ -113,6 +113,9 @@ public class FigurasCreadas extends JDialog {
 						dispose();
 					}
 				});
+				
+				JButton btnVista3D = new JButton("Vista 3D");
+				buttonPane.add(btnVista3D);
 				btnCerrar.setActionCommand("Cancel");
 				buttonPane.add(btnCerrar);
 			}
@@ -170,5 +173,4 @@ public class FigurasCreadas extends JDialog {
 		//tableModel.addRow(fila);
 			
 	}
-	
 }
