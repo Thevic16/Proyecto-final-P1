@@ -37,7 +37,7 @@ public class CrearFigura extends JDialog {
 	private JPanel panelParalelepipedo;
 
 	/**
-	 * Launch the application.
+	 * Launch the application.as
 	 */
 	public static void main(String[] args) {
 		try {
