@@ -17,10 +17,10 @@ import java.awt.Color;
 public class RegUsuario extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private JTextField txtPassword;
+	private JTextField txtID;
+	private JTextField txtApellido;
+	private JTextField txtNombre;
 
 	/**
 	 * Launch the application.
@@ -46,83 +46,83 @@ public class RegUsuario extends JDialog {
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		
-		JPanel panel = new JPanel();
-		panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Seleccione su Ocupaci\u00F3n", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel.setBounds(10, 28, 445, 53);
-		contentPanel.add(panel);
-		panel.setLayout(null);
+		JPanel pnlOcupacion = new JPanel();
+		pnlOcupacion.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Seleccione su Ocupaci\u00F3n", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		pnlOcupacion.setBounds(10, 28, 445, 53);
+		contentPanel.add(pnlOcupacion);
+		pnlOcupacion.setLayout(null);
 		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("Profesor");
-		rdbtnNewRadioButton.setBounds(101, 17, 109, 23);
-		panel.add(rdbtnNewRadioButton);
+		JRadioButton rdbtnProfesor = new JRadioButton("Profesor");
+		rdbtnProfesor.setBounds(101, 17, 109, 23);
+		pnlOcupacion.add(rdbtnProfesor);
 		
-		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Estudiante");
-		rdbtnNewRadioButton_1.setBounds(227, 17, 109, 23);
-		panel.add(rdbtnNewRadioButton_1);
+		JRadioButton rdbtnEstudiante = new JRadioButton("Estudiante");
+		rdbtnEstudiante.setBounds(227, 17, 109, 23);
+		pnlOcupacion.add(rdbtnEstudiante);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBorder(new TitledBorder(null, "Infomaci\u00F3n General", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_1.setBounds(10, 96, 445, 174);
-		contentPanel.add(panel_1);
-		panel_1.setLayout(null);
+		JPanel pnlInfoGeneral = new JPanel();
+		pnlInfoGeneral.setBorder(new TitledBorder(null, "Infomaci\u00F3n General", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		pnlInfoGeneral.setBounds(10, 96, 445, 174);
+		contentPanel.add(pnlInfoGeneral);
+		pnlInfoGeneral.setLayout(null);
 		{
-			JLabel lblNewLabel = new JLabel("ID");
-			lblNewLabel.setBounds(10, 31, 46, 14);
-			panel_1.add(lblNewLabel);
+			JLabel lbliD = new JLabel("ID");
+			lbliD.setBounds(10, 31, 46, 14);
+			pnlInfoGeneral.add(lbliD);
 		}
 		{
-			textField_1 = new JTextField();
-			textField_1.setBounds(88, 28, 266, 20);
-			panel_1.add(textField_1);
-			textField_1.setColumns(10);
+			txtID = new JTextField();
+			txtID.setBounds(88, 28, 266, 20);
+			pnlInfoGeneral.add(txtID);
+			txtID.setColumns(10);
 		}
 		{
-			JLabel lblNewLabel_1 = new JLabel("Nombre");
-			lblNewLabel_1.setBounds(10, 67, 46, 14);
-			panel_1.add(lblNewLabel_1);
+			JLabel lblNombre = new JLabel("Nombre");
+			lblNombre.setBounds(10, 67, 46, 14);
+			pnlInfoGeneral.add(lblNombre);
 		}
 		{
-			JLabel lblNewLabel_2 = new JLabel("Contrase\u00F1a");
-			lblNewLabel_2.setBounds(10, 140, 76, 14);
-			panel_1.add(lblNewLabel_2);
+			JLabel lblPassword = new JLabel("Contrase\u00F1a");
+			lblPassword.setBounds(10, 140, 76, 14);
+			pnlInfoGeneral.add(lblPassword);
 		}
 		{
-			textField_3 = new JTextField();
-			textField_3.setBounds(88, 64, 266, 20);
-			panel_1.add(textField_3);
-			textField_3.setColumns(10);
+			txtNombre = new JTextField();
+			txtNombre.setBounds(88, 64, 266, 20);
+			pnlInfoGeneral.add(txtNombre);
+			txtNombre.setColumns(10);
 		}
 		{
-			JLabel lblNewLabel_3 = new JLabel("Apellido(s)");
-			lblNewLabel_3.setBounds(10, 103, 62, 14);
-			panel_1.add(lblNewLabel_3);
+			JLabel lblApellido = new JLabel("Apellido(s)");
+			lblApellido.setBounds(10, 103, 62, 14);
+			pnlInfoGeneral.add(lblApellido);
 		}
 		{
-			textField_2 = new JTextField();
-			textField_2.setBounds(88, 100, 266, 20);
-			panel_1.add(textField_2);
-			textField_2.setColumns(10);
+			txtApellido = new JTextField();
+			txtApellido.setBounds(88, 100, 266, 20);
+			pnlInfoGeneral.add(txtApellido);
+			txtApellido.setColumns(10);
 		}
 		{
-			textField = new JTextField();
-			textField.setBounds(88, 137, 266, 20);
-			panel_1.add(textField);
-			textField.setColumns(10);
+			txtPassword = new JTextField();
+			txtPassword.setBounds(88, 137, 266, 20);
+			pnlInfoGeneral.add(txtPassword);
+			txtPassword.setColumns(10);
 		}
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton okButton = new JButton("Registrar");
-				okButton.setActionCommand("OK");
-				buttonPane.add(okButton);
-				getRootPane().setDefaultButton(okButton);
+				JButton btnRegistrar = new JButton("Registrar");
+				btnRegistrar.setActionCommand("OK");
+				buttonPane.add(btnRegistrar);
+				getRootPane().setDefaultButton(btnRegistrar);
 			}
 			{
-				JButton cancelButton = new JButton("Cancelar");
-				cancelButton.setActionCommand("Cancel");
-				buttonPane.add(cancelButton);
+				JButton btnCancelar = new JButton("Cancelar");
+				btnCancelar.setActionCommand("Cancel");
+				buttonPane.add(btnCancelar);
 			}
 		}
 	}
