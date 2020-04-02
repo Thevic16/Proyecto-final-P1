@@ -25,6 +25,7 @@ import javax.swing.border.EmptyBorder;
 
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -80,7 +81,7 @@ public class Login extends JFrame {
 		contentPane.add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 		
-		JLabel lblUsuario = new JLabel("Usuario:");
+		JLabel lblUsuario = new JLabel("ID Usuario:");
 		lblUsuario.setBounds(39, 39, 87, 14);
 		panel.add(lblUsuario);
 		
@@ -105,12 +106,26 @@ public class Login extends JFrame {
 					Principal frame = new Principal(centro);
 					dispose();
 					frame.setVisible(true);
-				};
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "Error! ID o usuario no es el correcto!", "Información", JOptionPane.ERROR_MESSAGE);
+
+				}
 				
 			}
 		});
 		btnLogin.setBounds(37, 175, 89, 23);
 		panel.add(btnLogin);
+		
+		JButton btnNewButton = new JButton("Registrar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RegUsuario regUsuario = new RegUsuario();
+				regUsuario.setVisible(true);
+			}
+		});
+		btnNewButton.setBounds(141, 175, 89, 23);
+		panel.add(btnNewButton);
 	}
 	
 	
@@ -129,6 +144,4 @@ public class Login extends JFrame {
 		
 		return aux;
 	}
-	
-	
 }
