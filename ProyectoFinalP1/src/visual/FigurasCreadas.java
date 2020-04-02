@@ -14,7 +14,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
-
+import javax.swing.table.TableColumnModel;
 import javax.swing.border.BevelBorder;
 import javax.swing.UIManager;
 import javax.swing.border.EtchedBorder;
@@ -127,6 +127,7 @@ public class FigurasCreadas extends JDialog {
 			String[] columnNames0 = {"Código", "Tipo","Área","Volumen"};
 			tableModel.setColumnIdentifiers(columnNames0);
 			
+			
 			break;
 			
 		case 1://Cilindros
@@ -163,7 +164,7 @@ public class FigurasCreadas extends JDialog {
 			break;
 		}
 		table.setModel(tableModel);
-		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		table.getTableHeader().setReorderingAllowed(false);
 		
 		//tableModel.addRow(fila);
