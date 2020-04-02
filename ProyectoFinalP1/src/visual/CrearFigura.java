@@ -19,11 +19,22 @@ import javax.swing.border.MatteBorder;
 import javax.swing.border.EtchedBorder;
 import javax.swing.JFormattedTextField;
 import javax.swing.JSpinner;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class CrearFigura extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTextField txtFiguraID;
+	private JRadioButton rdbtnCilindro;
+	private JRadioButton rdbtnCono;
+	private JRadioButton rdbtnCubo;
+	private JRadioButton rdbtnEsfera;
+	private JRadioButton rdbtnParalelepipedo;
+	private JPanel panelCilindroCono;
+	private JPanel panelCubo;
+	private JPanel panelEsfera;
+	private JPanel panelParalelepipedo;
 
 	/**
 	 * Launch the application.
@@ -66,24 +77,99 @@ public class CrearFigura extends JDialog {
 		panelTipoFigura.add(txtFiguraID);
 		txtFiguraID.setColumns(10);
 		
-		JRadioButton rdbtnCilindro = new JRadioButton("Cil\u00EDndro");
+		rdbtnCilindro = new JRadioButton("Cil\u00EDndro");
+		rdbtnCilindro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//apgagar los demas rbdtn
+				rdbtnCilindro.setSelected(true);
+				rdbtnCono.setSelected(false);
+				rdbtnCubo.setSelected(false);
+				rdbtnEsfera.setSelected(false);
+				rdbtnParalelepipedo.setSelected(false);
+				
+				panelCilindroCono.setVisible(true);
+				panelCubo.setVisible(false);
+				panelEsfera.setVisible(false);
+				panelParalelepipedo.setVisible(false);
+			}
+		});
 		rdbtnCilindro.setSelected(true);
 		rdbtnCilindro.setBounds(10, 41, 82, 23);
 		panelTipoFigura.add(rdbtnCilindro);
 		
-		JRadioButton rdbtnCono = new JRadioButton("Cono");
+		rdbtnCono = new JRadioButton("Cono");
+		rdbtnCono.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//apgagar los demas rbdtn
+				rdbtnCono.setSelected(true);
+				rdbtnCilindro.setSelected(false);
+				rdbtnCubo.setSelected(false);
+				rdbtnEsfera.setSelected(false);
+				rdbtnParalelepipedo.setSelected(false);
+				
+				panelCilindroCono.setVisible(true);
+				panelCubo.setVisible(false);
+				panelEsfera.setVisible(false);
+				panelParalelepipedo.setVisible(false);
+			}
+		});
 		rdbtnCono.setBounds(10, 81, 76, 23);
 		panelTipoFigura.add(rdbtnCono);
 		
-		JRadioButton rdbtnCubo = new JRadioButton("Cubo");
+		rdbtnCubo = new JRadioButton("Cubo");
+		rdbtnCubo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//apgagar los demas rbdtn
+				rdbtnCono.setSelected(false);
+				rdbtnCilindro.setSelected(false);
+				rdbtnCubo.setSelected(true);
+				rdbtnEsfera.setSelected(false);
+				rdbtnParalelepipedo.setSelected(false);
+				
+				panelCilindroCono.setVisible(false);
+				panelCubo.setVisible(true);
+				panelEsfera.setVisible(false);
+				panelParalelepipedo.setVisible(false);
+			}
+		});
 		rdbtnCubo.setBounds(10, 125, 76, 23);
 		panelTipoFigura.add(rdbtnCubo);
 		
-		JRadioButton rdbtnEsfera = new JRadioButton("Esfera");
+		rdbtnEsfera = new JRadioButton("Esfera");
+		rdbtnEsfera.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//apgagar los demas rbdtn
+				rdbtnCono.setSelected(false);
+				rdbtnCilindro.setSelected(false);
+				rdbtnCubo.setSelected(false);
+				rdbtnEsfera.setSelected(true);
+				rdbtnParalelepipedo.setSelected(false);
+				
+				panelCilindroCono.setVisible(false);
+				panelCubo.setVisible(false);
+				panelEsfera.setVisible(true);
+				panelParalelepipedo.setVisible(false);
+			}
+		});
 		rdbtnEsfera.setBounds(10, 169, 82, 23);
 		panelTipoFigura.add(rdbtnEsfera);
 		
-		JRadioButton rdbtnParalelepipedo = new JRadioButton("Paralelep\u00EDpedo");
+		rdbtnParalelepipedo = new JRadioButton("Paralelep\u00EDpedo");
+		rdbtnParalelepipedo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//apgagar los demas rbdtn
+				rdbtnCono.setSelected(false);
+				rdbtnCilindro.setSelected(false);
+				rdbtnCubo.setSelected(false);
+				rdbtnEsfera.setSelected(false);
+				rdbtnParalelepipedo.setSelected(true);
+				
+				panelCilindroCono.setVisible(false);
+				panelCubo.setVisible(false);
+				panelEsfera.setVisible(false);
+				panelParalelepipedo.setVisible(true);
+			}
+		});
 		rdbtnParalelepipedo.setBounds(10, 210, 113, 23);
 		panelTipoFigura.add(rdbtnParalelepipedo);
 		
@@ -91,7 +177,7 @@ public class CrearFigura extends JDialog {
 		lblFotoFigura.setBounds(193, 42, 207, 188);
 		panelTipoFigura.add(lblFotoFigura);
 		
-		JPanel panelCilindroCono = new JPanel();
+		panelCilindroCono = new JPanel();
 		panelCilindroCono.setBounds(437, 11, 175, 251);
 		contentPanel.add(panelCilindroCono);
 		panelCilindroCono.setBorder(new TitledBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null), "Par\u00E1metros", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
@@ -113,7 +199,7 @@ public class CrearFigura extends JDialog {
 		spnAltura.setBounds(59, 162, 73, 20);
 		panelCilindroCono.add(spnAltura);
 		
-		JPanel panelCubo = new JPanel();
+		panelCubo = new JPanel();
 		panelCubo.setBorder(new TitledBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null), "Par\u00E1metros", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		panelCubo.setBounds(437, 11, 175, 251);
 		contentPanel.add(panelCubo);
@@ -127,7 +213,7 @@ public class CrearFigura extends JDialog {
 		spnTamanoCubo.setBounds(52, 115, 71, 20);
 		panelCubo.add(spnTamanoCubo);
 		
-		JPanel panelEsfera = new JPanel();
+		panelEsfera = new JPanel();
 		panelEsfera.setBorder(new TitledBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null), "Par\u00E1metros", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		panelEsfera.setBounds(437, 11, 175, 251);
 		contentPanel.add(panelEsfera);
@@ -141,7 +227,7 @@ public class CrearFigura extends JDialog {
 		spnRadioEsfera.setBounds(55, 115, 64, 20);
 		panelEsfera.add(spnRadioEsfera);
 		
-		JPanel panelParalelepipedo = new JPanel();
+		panelParalelepipedo = new JPanel();
 		panelParalelepipedo.setBorder(new TitledBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null), "Par\u00E1metros", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		panelParalelepipedo.setBounds(437, 11, 175, 251);
 		contentPanel.add(panelParalelepipedo);
@@ -187,6 +273,11 @@ public class CrearFigura extends JDialog {
 				buttonPane.add(btnCancelar);
 			}
 		}
+		//configuracion inicial paneles
+		panelCilindroCono.setVisible(true);
+		panelCubo.setVisible(false);
+		panelEsfera.setVisible(false);
+		panelParalelepipedo.setVisible(false);
 	}
 	private static class __Tmp {
 		private static void __tmp() {
