@@ -228,7 +228,7 @@ public class CrearFigura extends JDialog {
 		panelEsfera.add(spnRadioEsfera);
 		
 		panelParalelepipedo = new JPanel();
-		panelParalelepipedo.setBorder(new TitledBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null), "Par\u00E1metros", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panelParalelepipedo.setBorder(new TitledBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null), "Par\u00E1metros", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		panelParalelepipedo.setBounds(437, 11, 175, 251);
 		contentPanel.add(panelParalelepipedo);
 		panelParalelepipedo.setLayout(null);
