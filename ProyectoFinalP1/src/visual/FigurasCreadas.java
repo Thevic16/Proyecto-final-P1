@@ -138,12 +138,12 @@ public class FigurasCreadas extends JDialog {
 	
 	private void loadFiguras(int seleccion) {
 		tableModel.setRowCount(0);
-		//fila = new Object[tableModel.getColumnCount()];
 		switch (seleccion) {
 		case 0://Todos
 			String[] columnNames0 = {"Código", "Tipo","Área","Volumen"};
 			tableModel.setColumnIdentifiers(columnNames0);
-			fila = new Object[tableModel.getColumnCount()];
+			fila = new Object[tableModel.getColumnCount()];//Esto hace que las filas se ajusten a 
+			//la cantidad de columnas según el tipo de figura a visualizar en la tabla.
 			for (Figura aux : centro.getLoginUser().getFiguras()) {
 				fila[0] = aux.getCodigo();
 				if(aux instanceof Cilindro)
