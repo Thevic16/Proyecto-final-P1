@@ -58,6 +58,8 @@ public abstract class Usuario {
 		this.figuras = figuras;
 	}
 
-
+	public void insertFigura(Figura figura) {
+		figuras.add(figura);
+	}
 
 }

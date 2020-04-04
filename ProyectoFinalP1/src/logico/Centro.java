@@ -8,6 +8,8 @@ public class Centro {
 	private int cantUsuarios;
 	private Usuario loginUser;
 	
+	private static int codigoFiguras = 0;
+	
 	private static Centro centro; // primer paso singleton 
 
 	private Centro() { //segundo paso singleton 
@@ -15,6 +17,7 @@ public class Centro {
 		this.figuras = new ArrayList<Figura>();
 		this.setUsuarios(new ArrayList<Usuario>());
 		this.cantUsuarios = 0;
+		
 	}
 
 	public static Centro getInstance() { // tercer paso, tiene que ser estatica para que no dependa de la clase.
@@ -43,6 +46,35 @@ public class Centro {
 	public void insertUsuario(Usuario user) {
 		usuarios.add(user);
 		cantUsuarios++;
+	}
+	
+	public ArrayList<Figura> getFiguras() {
+		return figuras;
+	}
+
+	public void setFiguras(ArrayList<Figura> figuras) {
+		this.figuras = figuras;
+	}
+
+	public int getCantUsuarios() {
+		return cantUsuarios;
+	}
+
+	public void setCantUsuarios(int cantUsuarios) {
+		this.cantUsuarios = cantUsuarios;
+	}
+
+	public int getCodigoFiguras() {
+		return codigoFiguras;
+	}
+
+	public void setCodigoFiguras(int codigoFiguras) {
+		Centro.codigoFiguras = codigoFiguras;
+	}
+
+	public void insertFigura(Figura figura) {
+		codigoFiguras++;
+		figuras.add(figura);
 	}
 	
 	public boolean confirmLogin(String id, String password) {

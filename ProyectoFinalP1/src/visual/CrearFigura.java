@@ -14,7 +14,13 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
 
 import logico.Centro;
+import logico.Cilindro;
+import logico.Cono;
+import logico.Cubo;
+import logico.Esfera;
 import logico.Estudiante;
+import logico.Figura;
+import logico.Paralelepipedo;
 import logico.Usuario;
 
 import javax.swing.JLabel;
@@ -40,16 +46,24 @@ public class CrearFigura extends JDialog {
 	private JPanel panelCubo;
 	private JPanel panelEsfera;
 	private JPanel panelParalelepipedo;
+	private JSpinner spnRadio;
+	private JSpinner spnAltura;
+	private JSpinner spnTamanoCubo;
+	private JSpinner spnRadioEsfera;
+	private JSpinner spnLongitudPp;
+	private JSpinner spnAlturaPp;
+	private JSpinner spnAnchuraPp;
+	private JButton btnCrear;
+	private Usuario user;
 	private Centro centro;
-	private static Usuario user;
-
+	
 	/**
 	 * Launch the application.as
 	 */
 	public static void main(String[] args) {
 		try {
-			user = new Estudiante("user","1","user","1234");
-			CrearFigura dialog = new CrearFigura(user);
+			Usuario est = new Estudiante("user","1","user","1234");
+			CrearFigura dialog = new CrearFigura(est);
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -60,7 +74,8 @@ public class CrearFigura extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public CrearFigura(Usuario user) {
+	public CrearFigura(Usuario usuario) {
+		this.user = usuario;
 		setResizable(false);
 		setTitle("Crear Figuras");
 		setBounds(100, 100, 633, 355);
@@ -81,6 +96,8 @@ public class CrearFigura extends JDialog {
 		
 		txtFiguraID = new JTextField();
 		txtFiguraID.setEditable(false);
+		txtFiguraID.setText("FIG-#"+0);
+		//txtFiguraID.setText("FIG-#"+centro.getCodigoFiguras());
 		txtFiguraID.setBounds(66, 17, 82, 20);
 		panelTipoFigura.add(txtFiguraID);
 		txtFiguraID.setColumns(10);
@@ -195,7 +212,7 @@ public class CrearFigura extends JDialog {
 		lblRadio.setBounds(74, 62, 48, 14);
 		panelCilindroCono.add(lblRadio);
 		
-		JSpinner spnRadio = new JSpinner();
+		spnRadio = new JSpinner();
 		spnRadio.setBounds(59, 87, 73, 20);
 		panelCilindroCono.add(spnRadio);
 		
@@ -203,7 +220,7 @@ public class CrearFigura extends JDialog {
 		lblAltura.setBounds(74, 137, 48, 14);
 		panelCilindroCono.add(lblAltura);
 		
-		JSpinner spnAltura = new JSpinner();
+		spnAltura = new JSpinner();
 		spnAltura.setBounds(59, 162, 73, 20);
 		panelCilindroCono.add(spnAltura);
 		
@@ -217,7 +234,7 @@ public class CrearFigura extends JDialog {
 		lblTamanoCubo.setBounds(68, 96, 60, 14);
 		panelCubo.add(lblTamanoCubo);
 		
-		JSpinner spnTamanoCubo = new JSpinner();
+		spnTamanoCubo = new JSpinner();
 		spnTamanoCubo.setBounds(52, 115, 71, 20);
 		panelCubo.add(spnTamanoCubo);
 		
@@ -231,7 +248,7 @@ public class CrearFigura extends JDialog {
 		lblRadioEsfera.setBounds(66, 90, 48, 14);
 		panelEsfera.add(lblRadioEsfera);
 		
-		JSpinner spnRadioEsfera = new JSpinner();
+		spnRadioEsfera = new JSpinner();
 		spnRadioEsfera.setBounds(55, 115, 64, 20);
 		panelEsfera.add(spnRadioEsfera);
 		
@@ -245,7 +262,7 @@ public class CrearFigura extends JDialog {
 		lblLongitudPp.setBounds(62, 31, 61, 14);
 		panelParalelepipedo.add(lblLongitudPp);
 		
-		JSpinner spnLongitudPp = new JSpinner();
+		spnLongitudPp = new JSpinner();
 		spnLongitudPp.setBounds(48, 51, 78, 20);
 		panelParalelepipedo.add(spnLongitudPp);
 		
@@ -253,7 +270,7 @@ public class CrearFigura extends JDialog {
 		lblAlturaPp.setBounds(70, 93, 53, 14);
 		panelParalelepipedo.add(lblAlturaPp);
 		
-		JSpinner spnAlturaPp = new JSpinner();
+		spnAlturaPp = new JSpinner();
 		spnAlturaPp.setBounds(48, 110, 78, 20);
 		panelParalelepipedo.add(spnAlturaPp);
 		
@@ -261,7 +278,7 @@ public class CrearFigura extends JDialog {
 		lblAnchuraPp.setBounds(65, 158, 58, 14);
 		panelParalelepipedo.add(lblAnchuraPp);
 		
-		JSpinner spnAnchuraPp = new JSpinner();
+		spnAnchuraPp = new JSpinner();
 		spnAnchuraPp.setBounds(48, 175, 78, 20);
 		panelParalelepipedo.add(spnAnchuraPp);
 		{
@@ -270,13 +287,42 @@ public class CrearFigura extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			buttonPane.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 			{
-				JButton btnCrear = new JButton("Crear");
+				btnCrear = new JButton("Crear");
 				btnCrear.addActionListener(new ActionListener() {
+					@SuppressWarnings({ "deprecation" })
 					public void actionPerformed(ActionEvent e) {
+						Figura aux = null;
+						String codigo = txtFiguraID.getText();
 						
-						
-						
+						if(rdbtnCilindro.isSelected()) {
+							float radio = new Float(spnRadio.getValue().toString());
+							float altura = new Float(spnAltura.getValue().toString());
+							aux = new Cilindro(codigo, radio, altura);
+						}
+						if(rdbtnCono.isSelected()) {
+							float radioCono = new Float(spnRadio.getValue().toString());
+							float alturaCono = new Float(spnAltura.getValue().toString());
+							aux = new Cono(codigo, radioCono, alturaCono);
+						}
+						if(rdbtnCubo.isSelected()) {
+							float tamano = new Float(spnTamanoCubo.getValue().toString());
+							aux = new Cubo(codigo,tamano);
+						}
+						if(rdbtnEsfera.isSelected()) {
+							float radioEsf = new Float(spnRadioEsfera.getValue().toString());
+							aux = new Esfera(codigo, radioEsf);
+						}
+						if(rdbtnParalelepipedo.isSelected()) {
+							float longitud = new Float(spnLongitudPp.getValue().toString());
+							float altura = new Float(spnAlturaPp.getValue().toString());
+							float anchura = new Float(spnAnchuraPp.getValue().toString());
+							aux = new Paralelepipedo(codigo, longitud, altura, anchura);
+						}
+						centro.insertFigura(aux);
+						user.insertFigura(aux);
+						clean();
 					}
+
 				});
 				btnCrear.setActionCommand("OK");
 				buttonPane.add(btnCrear);
@@ -299,4 +345,21 @@ public class CrearFigura extends JDialog {
 			  javax.swing.JPanel __wbp_panel = new javax.swing.JPanel();
 		}
 	}
+	
+	private void clean() {
+		panelCilindroCono.setVisible(true);
+		panelCubo.setVisible(false);
+		panelEsfera.setVisible(false);
+		panelParalelepipedo.setVisible(false);
+		rdbtnCilindro.setSelected(true);
+		txtFiguraID.setText("FIG-#"+centro.getCodigoFiguras());
+		spnRadio.setValue(Float.valueOf("0.0"));
+		spnAltura.setValue(Float.valueOf("0.0"));
+		spnAlturaPp.setValue(Float.valueOf("0.0"));
+		spnAnchuraPp.setValue(Float.valueOf("0.0"));
+		spnLongitudPp.setValue(Float.valueOf("0.0"));
+		spnRadioEsfera.setValue(Float.valueOf("0.0"));
+		spnTamanoCubo.setValue(Float.valueOf("0.0"));
+	}
+	
 }
