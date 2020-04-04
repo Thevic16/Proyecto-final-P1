@@ -83,7 +83,7 @@ public class Centro {
 			if(user.getID().equals(id)){
 				if(user.getPassword().equals(password)) {
 					login = true;
-					loginUser = user;
+					setLoginUser(user);
 				}
 			
 			}
@@ -94,6 +94,14 @@ public class Centro {
 		}
 				
 		return login;
+	}
+
+	public Usuario getLoginUser() {
+		return loginUser;
+	}
+
+	public void setLoginUser(Usuario loginUser) {
+		this.loginUser = loginUser;
 	}
 	
 	

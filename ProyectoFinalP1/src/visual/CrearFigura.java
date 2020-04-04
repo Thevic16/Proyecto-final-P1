@@ -54,7 +54,6 @@ public class CrearFigura extends JDialog {
 	private JSpinner spnAlturaPp;
 	private JSpinner spnAnchuraPp;
 	private JButton btnCrear;
-	private Usuario user;
 	private Centro centro;
 	
 	/**
@@ -62,8 +61,9 @@ public class CrearFigura extends JDialog {
 	 */
 	public static void main(String[] args) {
 		try {
-			Usuario est = new Estudiante("user","1","user","1234");
-			CrearFigura dialog = new CrearFigura(est);
+			//Usuario est = new Estudiante("user","1","user","1234");
+			Centro centro = Centro.getInstance();
+			CrearFigura dialog = new CrearFigura(centro);
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -74,8 +74,8 @@ public class CrearFigura extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public CrearFigura(Usuario usuario) {
-		this.user = usuario;
+	public CrearFigura(Centro centro) {
+		this.centro = centro;
 		setResizable(false);
 		setTitle("Crear Figuras");
 		setBounds(100, 100, 633, 355);
@@ -319,7 +319,7 @@ public class CrearFigura extends JDialog {
 							aux = new Paralelepipedo(codigo, longitud, altura, anchura);
 						}
 						centro.insertFigura(aux);
-						user.insertFigura(aux);
+						centro.getLoginUser().insertFigura(aux);
 						clean();
 					}
 
