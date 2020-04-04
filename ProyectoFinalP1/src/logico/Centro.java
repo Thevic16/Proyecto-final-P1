@@ -79,7 +79,10 @@ public class Centro {
 	
 	public boolean confirmLogin(String id, String password) {
 		boolean login = false;
+		System.out.println("Usuarios size:"+usuarios.size());
 		for (Usuario user : usuarios) {
+			System.out.println("Id:"+user.getID());
+			System.out.println("password:"+user.getPassword());
 			if(user.getID().equals(id)){
 				if(user.getPassword().equals(password)) {
 					login = true;
@@ -104,5 +107,6 @@ public class Centro {
 		this.loginUser = loginUser;
 	}
 	
+	//
 	
 }

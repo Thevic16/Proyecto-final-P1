@@ -34,8 +34,8 @@ import java.awt.event.ActionEvent;
 public class Login extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField IDtxt;
+	private JTextField contrasenaTxt;
 	private Centro centro;
 
 	/**
@@ -89,27 +89,26 @@ public class Login extends JFrame {
 		lblContrasea.setBounds(39, 98, 105, 14);
 		panel.add(lblContrasea);
 		
-		textField = new JTextField();
-		textField.setBounds(39, 64, 191, 20);
-		panel.add(textField);
-		textField.setColumns(10);
+		IDtxt = new JTextField();
+		IDtxt.setBounds(39, 64, 191, 20);
+		panel.add(IDtxt);
+		IDtxt.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(39, 128, 191, 20);
-		panel.add(textField_1);
-		textField_1.setColumns(10);
+		contrasenaTxt = new JTextField();
+		contrasenaTxt.setBounds(39, 128, 191, 20);
+		panel.add(contrasenaTxt);
+		contrasenaTxt.setColumns(10);
 		
 		JButton btnLogin = new JButton("Login");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(centro.confirmLogin(textField.getText(), textField_1.getText())){
+				if(centro.confirmLogin(IDtxt.getText(), contrasenaTxt.getText())){
 					Principal frame = new Principal(centro);
 					dispose();
 					frame.setVisible(true);
 				}
 				else {
 					JOptionPane.showMessageDialog(null, "Error! ID o usuario no es el correcto!", "Información", JOptionPane.ERROR_MESSAGE);
-
 				}
 				
 			}
@@ -144,4 +143,5 @@ public class Login extends JFrame {
 		
 		return aux;
 	}
+	//
 }

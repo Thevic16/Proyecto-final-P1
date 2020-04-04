@@ -156,12 +156,13 @@ public class RegUsuario extends JDialog {
 		
 		if((user instanceof Profesor && !user.getID().startsWith("P"))||(user instanceof Estudiante && !user.getID().startsWith("E"))) {
 			JOptionPane.showMessageDialog(null, "Identificación no válida", "Error", JOptionPane.ERROR_MESSAGE);
-			Clean();
-			return;
-		}		
-		educativo.insertUsuario(user);
-		JOptionPane.showMessageDialog(null, "Usuario registrado satisfactoriamente!", "Información", JOptionPane.INFORMATION_MESSAGE);
-	    Clean();
+		}
+		else {
+			educativo.insertUsuario(user);
+			JOptionPane.showMessageDialog(null, "Usuario registrado satisfactoriamente!", "Información", JOptionPane.INFORMATION_MESSAGE);
+		    Clean();
+		}
+
 	}
 	
 	public void Clean() {
@@ -170,5 +171,5 @@ public class RegUsuario extends JDialog {
 		txtID.setText("");
 		txtPassword.setText("");
 	}
-	
+	//
 }
