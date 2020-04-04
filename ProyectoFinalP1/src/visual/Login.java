@@ -120,7 +120,7 @@ public class Login extends JFrame {
 		JButton btnNewButton = new JButton("Registrar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				RegUsuario regUsuario = new RegUsuario();
+				RegUsuario regUsuario = new RegUsuario(centro);
 				regUsuario.setVisible(true);
 			}
 		});

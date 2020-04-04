@@ -37,7 +37,8 @@ public class RegUsuario extends JDialog {
 	 */
 	public static void main(String[] args) {
 		try {
-			RegUsuario dialog = new RegUsuario();
+			Centro centro = Centro.getInstance();
+			RegUsuario dialog = new RegUsuario(centro);
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -48,7 +49,8 @@ public class RegUsuario extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public RegUsuario() {
+	public RegUsuario(Centro centro) {
+		this.educativo = centro;
 		setTitle("Registrar");
 		setBounds(100, 100, 481, 353);
 		getContentPane().setLayout(new BorderLayout());
