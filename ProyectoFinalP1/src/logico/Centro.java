@@ -2,11 +2,10 @@ package logico;
 
 import java.util.ArrayList;
 
-
-
 public class Centro {
 	private ArrayList<Figura>figuras; 
 	private ArrayList<Usuario>usuarios;
+	private int cantUsuarios;
 	private Usuario loginUser;
 	
 	private static Centro centro; // primer paso singleton 
@@ -15,6 +14,7 @@ public class Centro {
 		// TODO Auto-generated constructor stub
 		this.figuras = new ArrayList<Figura>();
 		this.setUsuarios(new ArrayList<Usuario>());
+		this.cantUsuarios = 0;
 	}
 
 	public static Centro getInstance() { // tercer paso, tiene que ser estatica para que no dependa de la clase.
@@ -38,6 +38,11 @@ public class Centro {
 
 	public void setUsuarios(ArrayList<Usuario> usuarios) {
 		this.usuarios = usuarios;
+	}
+	
+	public void insertUsuario(Usuario user) {
+		usuarios.add(user);
+		cantUsuarios++;
 	}
 	
 	public boolean confirmLogin(String id, String password) {

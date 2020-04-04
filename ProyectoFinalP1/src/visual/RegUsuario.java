@@ -8,11 +8,20 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.border.TitledBorder;
+
+import logico.Centro;
+import logico.Estudiante;
+import logico.Profesor;
+import logico.Usuario;
+
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.border.EtchedBorder;
 import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class RegUsuario extends JDialog {
 
@@ -21,6 +30,7 @@ public class RegUsuario extends JDialog {
 	private JTextField txtID;
 	private JTextField txtApellido;
 	private JTextField txtNombre;
+	private static Centro educativo;
 
 	/**
 	 * Launch the application.
@@ -115,6 +125,18 @@ public class RegUsuario extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton btnRegistrar = new JButton("Registrar");
+				btnRegistrar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						if(rdbtnProfesor.isSelected()) {
+							Profesor teacher = new Profesor(txtNombre.getText(), txtID.getText(), txtApellido.getText(), txtPassword.getText());
+							insertUsuario(teacher);
+						}else if(rdbtnEstudiante.isSelected()) {
+							Estudiante student = new Estudiante(txtNombre.getText(), txtID.getText(), txtApellido.getText(), txtPassword.getText());
+							insertUsuario(student);						
+						}
+					}
+					
+				});
 				btnRegistrar.setActionCommand("OK");
 				buttonPane.add(btnRegistrar);
 				getRootPane().setDefaultButton(btnRegistrar);
@@ -126,4 +148,25 @@ public class RegUsuario extends JDialog {
 			}
 		}
 	}
+	
+	
+	public void insertUsuario(Usuario user) {
+		
+		if((user instanceof Profesor && !user.getID().startsWith("P"))||(user instanceof Estudiante && !user.getID().startsWith("E"))) {
+			JOptionPane.showMessageDialog(null, "Identificación no válida", "Error", JOptionPane.ERROR_MESSAGE);
+			Clean();
+			return;
+		}		
+		educativo.insertUsuario(user);
+		JOptionPane.showMessageDialog(null, "Usuario registrado satisfactoriamente!", "Información", JOptionPane.INFORMATION_MESSAGE);
+	    Clean();
+	}
+	
+	public void Clean() {
+		txtNombre.setText("");
+		txtApellido.setText("");
+		txtID.setText("");
+		txtPassword.setText("");
+	}
+	
 }
