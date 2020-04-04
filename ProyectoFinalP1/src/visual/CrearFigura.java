@@ -12,6 +12,11 @@ import java.awt.Color;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
+
+import logico.Centro;
+import logico.Estudiante;
+import logico.Usuario;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
@@ -35,13 +40,16 @@ public class CrearFigura extends JDialog {
 	private JPanel panelCubo;
 	private JPanel panelEsfera;
 	private JPanel panelParalelepipedo;
+	private Centro centro;
+	private static Usuario user;
 
 	/**
 	 * Launch the application.as
 	 */
 	public static void main(String[] args) {
 		try {
-			CrearFigura dialog = new CrearFigura();
+			user = new Estudiante("user","1","user","1234");
+			CrearFigura dialog = new CrearFigura(user);
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -52,7 +60,7 @@ public class CrearFigura extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public CrearFigura() {
+	public CrearFigura(Usuario user) {
 		setResizable(false);
 		setTitle("Crear Figuras");
 		setBounds(100, 100, 633, 355);
@@ -263,6 +271,13 @@ public class CrearFigura extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 			{
 				JButton btnCrear = new JButton("Crear");
+				btnCrear.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						
+						
+						
+					}
+				});
 				btnCrear.setActionCommand("OK");
 				buttonPane.add(btnCrear);
 				getRootPane().setDefaultButton(btnCrear);
