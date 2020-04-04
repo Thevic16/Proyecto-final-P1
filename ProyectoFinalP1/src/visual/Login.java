@@ -30,6 +30,8 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class Login extends JFrame {
 
@@ -58,13 +60,25 @@ public class Login extends JFrame {
 	 * Create the frame.
 	 */
 	public Login() {
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				try {
+					guadarInstanceCentro(centro);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		// cargar el centro y sus datos
 		Centro aux = null;
 		
 		try {
 			aux = cargarInstanceCentro();
 		} catch (Exception e) {
-			//System.out.println("Primera vez");
+			System.out.print(e);
+			System.out.println("Primera vez");
 			aux = Centro.getInstance();
 		}
 		this.centro=aux;
@@ -143,5 +157,15 @@ public class Login extends JFrame {
 		
 		return aux;
 	}
-	//
+	
+	//guardar controladora
+	private void guadarInstanceCentro(Centro centro) throws IOException {
+		FileOutputStream f = new FileOutputStream ("Centro.dat");
+		ObjectOutputStream oos 	= new ObjectOutputStream (f);
+		
+		oos.writeObject(centro);
+					
+	    oos.close();
+	}
+	
 }

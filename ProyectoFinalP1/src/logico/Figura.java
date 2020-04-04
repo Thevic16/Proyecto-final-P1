@@ -1,6 +1,12 @@
 package logico;
 
-public abstract class Figura {
+import java.io.Serializable;
+
+public abstract class Figura implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	protected String codigo;
 	
 	public Figura(String codigo) {

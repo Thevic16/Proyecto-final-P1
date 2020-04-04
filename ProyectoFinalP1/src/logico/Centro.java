@@ -1,8 +1,9 @@
 package logico;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Centro {
+public class Centro implements Serializable {
 	private ArrayList<Figura>figuras; 
 	private ArrayList<Usuario>usuarios;
 	private int cantUsuarios;
