@@ -24,6 +24,7 @@ import logico.Paralelepipedo;
 import logico.Usuario;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.border.MatteBorder;
@@ -32,6 +33,7 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JSpinner;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.SpinnerNumberModel;
 
 public class CrearFigura extends JDialog {
 
@@ -213,6 +215,7 @@ public class CrearFigura extends JDialog {
 		panelCilindroCono.add(lblRadio);
 		
 		spnRadio = new JSpinner();
+		spnRadio.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), null, new Integer(1)));
 		spnRadio.setBounds(59, 87, 73, 20);
 		panelCilindroCono.add(spnRadio);
 		
@@ -221,6 +224,7 @@ public class CrearFigura extends JDialog {
 		panelCilindroCono.add(lblAltura);
 		
 		spnAltura = new JSpinner();
+		spnAltura.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), null, new Integer(1)));
 		spnAltura.setBounds(59, 162, 73, 20);
 		panelCilindroCono.add(spnAltura);
 		
@@ -235,6 +239,7 @@ public class CrearFigura extends JDialog {
 		panelCubo.add(lblTamanoCubo);
 		
 		spnTamanoCubo = new JSpinner();
+		spnTamanoCubo.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), null, new Integer(1)));
 		spnTamanoCubo.setBounds(52, 115, 71, 20);
 		panelCubo.add(spnTamanoCubo);
 		
@@ -249,6 +254,7 @@ public class CrearFigura extends JDialog {
 		panelEsfera.add(lblRadioEsfera);
 		
 		spnRadioEsfera = new JSpinner();
+		spnRadioEsfera.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), null, new Integer(1)));
 		spnRadioEsfera.setBounds(55, 115, 64, 20);
 		panelEsfera.add(spnRadioEsfera);
 		
@@ -263,6 +269,7 @@ public class CrearFigura extends JDialog {
 		panelParalelepipedo.add(lblLongitudPp);
 		
 		spnLongitudPp = new JSpinner();
+		spnLongitudPp.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), null, new Integer(1)));
 		spnLongitudPp.setBounds(48, 51, 78, 20);
 		panelParalelepipedo.add(spnLongitudPp);
 		
@@ -271,6 +278,7 @@ public class CrearFigura extends JDialog {
 		panelParalelepipedo.add(lblAlturaPp);
 		
 		spnAlturaPp = new JSpinner();
+		spnAlturaPp.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), null, new Integer(1)));
 		spnAlturaPp.setBounds(48, 110, 78, 20);
 		panelParalelepipedo.add(spnAlturaPp);
 		
@@ -279,6 +287,7 @@ public class CrearFigura extends JDialog {
 		panelParalelepipedo.add(lblAnchuraPp);
 		
 		spnAnchuraPp = new JSpinner();
+		spnAnchuraPp.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), null, new Integer(1)));
 		spnAnchuraPp.setBounds(48, 175, 78, 20);
 		panelParalelepipedo.add(spnAnchuraPp);
 		{
@@ -320,6 +329,7 @@ public class CrearFigura extends JDialog {
 						}
 						centro.insertFigura(aux);
 						centro.getLoginUser().insertFigura(aux);
+						JOptionPane.showMessageDialog(null, "La figura se ha creado correctamente.", "Información", JOptionPane.INFORMATION_MESSAGE);
 						clean();
 					}
 
@@ -347,19 +357,14 @@ public class CrearFigura extends JDialog {
 	}
 	
 	private void clean() {
-		panelCilindroCono.setVisible(true);
-		panelCubo.setVisible(false);
-		panelEsfera.setVisible(false);
-		panelParalelepipedo.setVisible(false);
-		rdbtnCilindro.setSelected(true);
 		txtFiguraID.setText("FIG-#"+centro.getCodigoFiguras());
-		spnRadio.setValue(Float.valueOf("0.0"));
-		spnAltura.setValue(Float.valueOf("0.0"));
-		spnAlturaPp.setValue(Float.valueOf("0.0"));
-		spnAnchuraPp.setValue(Float.valueOf("0.0"));
-		spnLongitudPp.setValue(Float.valueOf("0.0"));
-		spnRadioEsfera.setValue(Float.valueOf("0.0"));
-		spnTamanoCubo.setValue(Float.valueOf("0.0"));
+		spnRadio.setValue(Float.valueOf("1"));
+		spnAltura.setValue(Float.valueOf("1"));
+		spnAlturaPp.setValue(Float.valueOf("1"));
+		spnAnchuraPp.setValue(Float.valueOf("1"));
+		spnLongitudPp.setValue(Float.valueOf("1"));
+		spnRadioEsfera.setValue(Float.valueOf("1"));
+		spnTamanoCubo.setValue(Float.valueOf("1"));
 	}
 	
 }
