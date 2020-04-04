@@ -80,11 +80,20 @@ public class Principal extends JFrame {
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				CrearFigura crearFigura = new CrearFigura(centro);
+				crearFigura.setModal(true);
+				crearFigura.setVisible(true);
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem);
 		
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Listar figuras creadas");
+		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FigurasCreadas figurasCreadas = new FigurasCreadas(centro);
+				figurasCreadas.setModal(true);
+				figurasCreadas.setVisible(true);
+			}
+		});
 		mnNewMenu.add(mntmNewMenuItem_1);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

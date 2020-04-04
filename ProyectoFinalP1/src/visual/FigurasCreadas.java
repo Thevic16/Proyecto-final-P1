@@ -49,15 +49,16 @@ public class FigurasCreadas extends JDialog {
 	private JComboBox cbxTipoFiguras;
 	private JScrollPane scrollPane;
 	private Centro centro;
-	private static Usuario user;
+	//private static Usuario user;
 	
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		try {
-			user = new Estudiante("user", "1", "user", "1234");
-			FigurasCreadas dialog = new FigurasCreadas(user);
+			//user = new Estudiante("user", "1", "user", "1234");
+			Centro centro = Centro.getInstance();
+			FigurasCreadas dialog = new FigurasCreadas(centro);
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -68,8 +69,8 @@ public class FigurasCreadas extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public FigurasCreadas(Usuario user) {
-		this.user = user;
+	public FigurasCreadas(Centro centro) {
+		this.centro = centro;
 		setBackground(new Color(176, 224, 230));
 		setTitle("Figuras Creadas");
 		setBounds(100, 100, 577, 421);
@@ -143,7 +144,7 @@ public class FigurasCreadas extends JDialog {
 		case 0://Todos
 			String[] columnNames0 = {"Código", "Tipo","Área","Volumen"};
 			tableModel.setColumnIdentifiers(columnNames0);
-			for (Figura aux : user.getFiguras()) {
+			for (Figura aux : centro.getLoginUser().getFiguras()) {
 				fila[0] = aux.getCodigo();
 				if(aux instanceof Cilindro)
 					fila[1] = "Cilíndro";
@@ -165,7 +166,7 @@ public class FigurasCreadas extends JDialog {
 		case 1://Cilindros
 			String[] columnNames1 = {"Código","Radio", "Altura","Área L.","Área B.","Área Total"};
 			tableModel.setColumnIdentifiers(columnNames1);
-			for (Figura aux : user.getFiguras()) {
+			for (Figura aux : centro.getLoginUser().getFiguras()) {
 				if(aux instanceof Cilindro) {
 					fila[0] = aux.getCodigo();
 					fila[1] = ((Cilindro) aux).getRadio();
@@ -182,7 +183,7 @@ public class FigurasCreadas extends JDialog {
 		case 2://Conos
 			String[] columnNames2 = {"Código","Radio", "Altura","Área L.","Área B.","Área Total"};
 			tableModel.setColumnIdentifiers(columnNames2);
-			for (Figura aux : user.getFiguras()) {
+			for (Figura aux : centro.getLoginUser().getFiguras()) {
 				if(aux instanceof Cono) {
 					fila[0] = aux.getCodigo();
 					fila[1] = ((Cono) aux).getRadio();
@@ -199,7 +200,7 @@ public class FigurasCreadas extends JDialog {
 		case 3://Cubos
 			String[] columnNames3 = {"Código","Tamaño","Área Total","Volumen"};
 			tableModel.setColumnIdentifiers(columnNames3);
-			for (Figura aux : user.getFiguras()) {
+			for (Figura aux : centro.getLoginUser().getFiguras()) {
 				if(aux instanceof Cubo) {
 					fila[0] = aux.getCodigo();
 					fila[1] = ((Cubo) aux).getTamano();
@@ -214,7 +215,7 @@ public class FigurasCreadas extends JDialog {
 		case 4://Esferas
 			String[] columnNames4 = {"Código","Radio", "Área Total","Volumen"};
 			tableModel.setColumnIdentifiers(columnNames4);
-			for (Figura aux : user.getFiguras()) {
+			for (Figura aux : centro.getLoginUser().getFiguras()) {
 				if(aux instanceof Esfera) {
 					fila[0] = aux.getCodigo();
 					fila[1] = ((Esfera) aux).getRadio();
@@ -229,7 +230,7 @@ public class FigurasCreadas extends JDialog {
 		case 5://Paralelepípedos
 			String[] columnNames5 = {"Código","Longitud", "Altura","Anchura","Área L.","Área B.","Área Total","Volumen"};
 			tableModel.setColumnIdentifiers(columnNames5);
-			for (Figura aux : user.getFiguras()) {
+			for (Figura aux : centro.getLoginUser().getFiguras()) {
 				if(aux instanceof Paralelepipedo) {
 					fila[0] = aux.getCodigo();
 					fila[1] = ((Paralelepipedo) aux).getLongitud();
