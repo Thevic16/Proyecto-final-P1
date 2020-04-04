@@ -31,6 +31,8 @@ public class RegUsuario extends JDialog {
 	private JTextField txtApellido;
 	private JTextField txtNombre;
 	private static Centro educativo;
+	private JRadioButton rdbtnEstudiante;
+	private JRadioButton rdbtnProfesor;
 
 	/**
 	 * Launch the application.
@@ -64,13 +66,28 @@ public class RegUsuario extends JDialog {
 		contentPanel.add(pnlOcupacion);
 		pnlOcupacion.setLayout(null);
 		
-		JRadioButton rdbtnProfesor = new JRadioButton("Profesor");
+		rdbtnProfesor = new JRadioButton("Profesor");
+		rdbtnProfesor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				rdbtnProfesor.setSelected(true);
+				rdbtnEstudiante.setSelected(false);
+			}
+		});
 		rdbtnProfesor.setBounds(101, 17, 109, 23);
+		rdbtnProfesor.setSelected(false);
 		pnlOcupacion.add(rdbtnProfesor);
 		
-		JRadioButton rdbtnEstudiante = new JRadioButton("Estudiante");
+		rdbtnEstudiante = new JRadioButton("Estudiante");
+		rdbtnEstudiante.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				rdbtnProfesor.setSelected(false);
+				rdbtnEstudiante.setSelected(true);
+			}
+		});
 		rdbtnEstudiante.setBounds(227, 17, 109, 23);
+		rdbtnEstudiante.setSelected(true);
 		pnlOcupacion.add(rdbtnEstudiante);
+
 		
 		JPanel pnlInfoGeneral = new JPanel();
 		pnlInfoGeneral.setBorder(new TitledBorder(null, "Infomaci\u00F3n General", TitledBorder.LEADING, TitledBorder.TOP, null, null));
