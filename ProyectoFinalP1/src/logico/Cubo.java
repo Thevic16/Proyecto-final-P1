@@ -8,7 +8,6 @@ public class Cubo extends Figura {
 		this.tamano = tamano;
 	}
 
-
 	@Override
 	public float area() {
 		// TODO Auto-generated method stub
