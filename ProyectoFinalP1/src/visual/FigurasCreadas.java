@@ -168,7 +168,7 @@ public class FigurasCreadas extends JDialog {
 			tableModel.setColumnIdentifiers(columnNames1);
 			for (Figura aux : centro.getLoginUser().getFiguras()) {
 				if(aux instanceof Cilindro) {
-					fila[0] = aux.getCodigo();
+					fila[0] = ((Cilindro) aux).getCodigo();
 					fila[1] = ((Cilindro) aux).getRadio();
 					fila[2] = ((Cilindro) aux).getAltura();
 					fila[3] = ((Cilindro) aux).areaLateral();
@@ -185,7 +185,7 @@ public class FigurasCreadas extends JDialog {
 			tableModel.setColumnIdentifiers(columnNames2);
 			for (Figura aux : centro.getLoginUser().getFiguras()) {
 				if(aux instanceof Cono) {
-					fila[0] = aux.getCodigo();
+					fila[0] = ((Cono) aux).getCodigo();
 					fila[1] = ((Cono) aux).getRadio();
 					fila[2] = ((Cono) aux).getAltura();
 					fila[3] = ((Cono) aux).areaLateral();
@@ -202,10 +202,10 @@ public class FigurasCreadas extends JDialog {
 			tableModel.setColumnIdentifiers(columnNames3);
 			for (Figura aux : centro.getLoginUser().getFiguras()) {
 				if(aux instanceof Cubo) {
-					fila[0] = aux.getCodigo();
+					fila[0] = ((Cubo) aux).getCodigo();
 					fila[1] = ((Cubo) aux).getTamano();
-					fila[2] = ((Cono) aux).area();
-					fila[3] = ((Cono) aux).volumen();
+					fila[2] = ((Cubo) aux).area();
+					fila[3] = ((Cubo) aux).volumen();
 					
 					tableModel.addRow(fila);
 				}
@@ -217,10 +217,10 @@ public class FigurasCreadas extends JDialog {
 			tableModel.setColumnIdentifiers(columnNames4);
 			for (Figura aux : centro.getLoginUser().getFiguras()) {
 				if(aux instanceof Esfera) {
-					fila[0] = aux.getCodigo();
+					fila[0] = ((Esfera) aux).getCodigo();
 					fila[1] = ((Esfera) aux).getRadio();
 					fila[2] = ((Esfera) aux).area();
-					fila[3] = ((Cono) aux).volumen();
+					fila[3] = ((Esfera) aux).volumen();
 					
 					tableModel.addRow(fila);
 				}

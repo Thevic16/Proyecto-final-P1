@@ -77,8 +77,8 @@ public class Login extends JFrame {
 		try {
 			aux = cargarInstanceCentro();
 		} catch (Exception e) {
-			System.out.print(e);
-			System.out.println("Primera vez");
+			//System.out.print(e);
+			//System.out.println("Primera vez");
 			aux = Centro.getInstance();
 		}
 		this.centro=aux;
