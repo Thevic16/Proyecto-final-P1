@@ -48,8 +48,4 @@ public class Cilindro extends Figura {
 	public void setAltura(float altura) {
 		this.altura = altura;
 	}
-
-
-	
-
 }
