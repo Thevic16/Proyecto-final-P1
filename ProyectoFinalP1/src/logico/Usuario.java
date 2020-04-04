@@ -9,13 +9,13 @@ public abstract class Usuario {
 	protected String password;
 	protected ArrayList<Figura>figuras;
 	
-	public Usuario(String nombre, String iD, String apellido, String password, ArrayList<Figura> figuras) {
+	public Usuario(String nombre, String iD, String apellido, String password) {
 		super();
 		this.nombre = nombre;
 		ID = iD;
 		this.apellido = apellido;
 		this.password = password;
-		this.figuras = figuras;
+		this.figuras = new ArrayList<Figura>();
 	}
 
 	public String getNombre() {
