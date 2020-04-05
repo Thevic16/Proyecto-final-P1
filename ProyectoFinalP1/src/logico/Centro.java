@@ -9,6 +9,8 @@ public class Centro implements Serializable {
 	private int cantUsuarios;
 	private Usuario loginUser;
 	
+	private boolean loginAdmin = false; // si es verdadero se inicio seccion el administrador. 
+	
 	private static int codigoFiguras = 0;
 	
 	private static Centro centro; // primer paso singleton 
@@ -92,10 +94,6 @@ public class Centro implements Serializable {
 			
 			}
 		}
-		//condicion para el administrador
-		if(id.equals("Admin") && password.equals("Admin")) {
-			login = true;
-		}
 				
 		return login;
 	}
@@ -106,6 +104,14 @@ public class Centro implements Serializable {
 
 	public void setLoginUser(Usuario loginUser) {
 		this.loginUser = loginUser;
+	}
+
+	public boolean isLoginAdmin() {
+		return loginAdmin;
+	}
+
+	public void setLoginAdmin(boolean loginAdmin) {
+		this.loginAdmin = loginAdmin;
 	}
 	
 	//

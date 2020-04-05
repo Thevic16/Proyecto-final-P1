@@ -116,7 +116,13 @@ public class Login extends JFrame {
 		JButton btnLogin = new JButton("Login");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(centro.confirmLogin(IDtxt.getText(), contrasenaTxt.getText())){
+				if(IDtxt.getText().contentEquals("Admin") && contrasenaTxt.getText().equals("Admin")) {
+					centro.setLoginAdmin(true);
+					PrincipalAdmin frame = new PrincipalAdmin(centro);
+					dispose();
+					frame.setVisible(true);
+				}
+				else if(centro.confirmLogin(IDtxt.getText(), contrasenaTxt.getText())){
 					Principal frame = new Principal(centro);
 					dispose();
 					frame.setVisible(true);

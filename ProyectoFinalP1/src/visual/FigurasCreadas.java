@@ -49,14 +49,13 @@ public class FigurasCreadas extends JDialog {
 	private JComboBox cbxTipoFiguras;
 	private JScrollPane scrollPane;
 	private Centro centro;
-	//private static Usuario user;
+	
 	
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		try {
-			//user = new Estudiante("user", "1", "user", "1234");
 			Centro centro = Centro.getInstance();
 			FigurasCreadas dialog = new FigurasCreadas(centro);
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -139,11 +138,12 @@ public class FigurasCreadas extends JDialog {
 	
 	private void loadFiguras(int seleccion) {
 		tableModel.setRowCount(0);
-		fila = new Object[tableModel.getColumnCount()];
 		switch (seleccion) {
 		case 0://Todos
 			String[] columnNames0 = {"Código", "Tipo","Área","Volumen"};
 			tableModel.setColumnIdentifiers(columnNames0);
+			fila = new Object[tableModel.getColumnCount()];//Esto hace que las filas se ajusten a 
+			//la cantidad de columnas según el tipo de figura a visualizar en la tabla.
 			for (Figura aux : centro.getLoginUser().getFiguras()) {
 				fila[0] = aux.getCodigo();
 				if(aux instanceof Cilindro)
@@ -166,6 +166,7 @@ public class FigurasCreadas extends JDialog {
 		case 1://Cilindros
 			String[] columnNames1 = {"Código","Radio", "Altura","Área L.","Área B.","Área Total"};
 			tableModel.setColumnIdentifiers(columnNames1);
+			fila = new Object[tableModel.getColumnCount()];
 			for (Figura aux : centro.getLoginUser().getFiguras()) {
 				if(aux instanceof Cilindro) {
 					fila[0] = ((Cilindro) aux).getCodigo();
@@ -173,7 +174,7 @@ public class FigurasCreadas extends JDialog {
 					fila[2] = ((Cilindro) aux).getAltura();
 					fila[3] = ((Cilindro) aux).areaLateral();
 					fila[4] = ((Cilindro) aux).areaBase();
-					fila[3] = ((Cilindro) aux).area();
+					fila[5] = ((Cilindro) aux).area();
 					
 					tableModel.addRow(fila);
 				}
@@ -183,6 +184,7 @@ public class FigurasCreadas extends JDialog {
 		case 2://Conos
 			String[] columnNames2 = {"Código","Radio", "Altura","Área L.","Área B.","Área Total"};
 			tableModel.setColumnIdentifiers(columnNames2);
+			fila = new Object[tableModel.getColumnCount()];
 			for (Figura aux : centro.getLoginUser().getFiguras()) {
 				if(aux instanceof Cono) {
 					fila[0] = ((Cono) aux).getCodigo();
@@ -190,7 +192,7 @@ public class FigurasCreadas extends JDialog {
 					fila[2] = ((Cono) aux).getAltura();
 					fila[3] = ((Cono) aux).areaLateral();
 					fila[4] = ((Cono) aux).areaBase();
-					fila[3] = ((Cono) aux).area();
+					fila[5] = ((Cono) aux).area();
 					
 					tableModel.addRow(fila);
 				}
@@ -200,6 +202,7 @@ public class FigurasCreadas extends JDialog {
 		case 3://Cubos
 			String[] columnNames3 = {"Código","Tamaño","Área Total","Volumen"};
 			tableModel.setColumnIdentifiers(columnNames3);
+			fila = new Object[tableModel.getColumnCount()];
 			for (Figura aux : centro.getLoginUser().getFiguras()) {
 				if(aux instanceof Cubo) {
 					fila[0] = ((Cubo) aux).getCodigo();
@@ -215,6 +218,7 @@ public class FigurasCreadas extends JDialog {
 		case 4://Esferas
 			String[] columnNames4 = {"Código","Radio", "Área Total","Volumen"};
 			tableModel.setColumnIdentifiers(columnNames4);
+			fila = new Object[tableModel.getColumnCount()];
 			for (Figura aux : centro.getLoginUser().getFiguras()) {
 				if(aux instanceof Esfera) {
 					fila[0] = ((Esfera) aux).getCodigo();
@@ -230,6 +234,7 @@ public class FigurasCreadas extends JDialog {
 		case 5://Paralelepípedos
 			String[] columnNames5 = {"Código","Longitud", "Altura","Anchura","Área L.","Área B.","Área Total","Volumen"};
 			tableModel.setColumnIdentifiers(columnNames5);
+			fila = new Object[tableModel.getColumnCount()];
 			for (Figura aux : centro.getLoginUser().getFiguras()) {
 				if(aux instanceof Paralelepipedo) {
 					fila[0] = aux.getCodigo();
@@ -249,7 +254,7 @@ public class FigurasCreadas extends JDialog {
 		default:
 			break;
 		}
-		
+		//PARA LAS OPCIONES EN TABLA
 		table.setModel(tableModel);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		table.getTableHeader().setReorderingAllowed(false);	
