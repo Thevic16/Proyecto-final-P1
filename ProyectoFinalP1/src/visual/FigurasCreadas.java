@@ -254,7 +254,7 @@ public class FigurasCreadas extends JDialog {
 		default:
 			break;
 		}
-		
+		//PARA LAS OPCIONES EN TABLA
 		table.setModel(tableModel);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		table.getTableHeader().setReorderingAllowed(false);	
