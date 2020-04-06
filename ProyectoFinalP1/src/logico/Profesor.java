@@ -9,7 +9,15 @@ public class Profesor extends Usuario {
 	public Profesor(String nombre, String iD, String apellido, String password) {
 		super(nombre, iD, apellido, password);
 		// TODO Auto-generated constructor stub
-		this.estudiantes = new ArrayList<Estudiante>();
+		this.setEstudiantes(new ArrayList<Estudiante>());
+	}
+
+	public ArrayList<Estudiante> getEstudiantes() {
+		return estudiantes;
+	}
+
+	public void setEstudiantes(ArrayList<Estudiante> estudiantes) {
+		this.estudiantes = estudiantes;
 	}
 
 	

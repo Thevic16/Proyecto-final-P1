@@ -86,6 +86,19 @@ public class PrincipalAdmin extends JFrame {
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem_1);
+		
+		JMenu mnNewMenu_1 = new JMenu("Usuarios");
+		menuBar.add(mnNewMenu_1);
+		
+		JMenuItem mntmNewMenuItem = new JMenuItem("Listar usuarios");
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListarUsuarios listarUsuarios = new ListarUsuarios(centro);
+				listarUsuarios.setModal(true);
+				listarUsuarios.setVisible(true);
+			}
+		});
+		mnNewMenu_1.add(mntmNewMenuItem);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));

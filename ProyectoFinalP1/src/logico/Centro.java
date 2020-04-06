@@ -79,6 +79,23 @@ public class Centro implements Serializable {
 		codigoFiguras++;
 		figuras.add(figura);
 	}
+	public boolean removeUser(int indice) {
+		boolean hecho = true;
+		
+		Usuario user = usuarios.get(indice); 
+		
+		if(user instanceof Profesor) {
+			if(((Profesor) user).getEstudiantes().size() ==0) {
+				hecho = false; // si el profesor tiene estudiantes no se puede. 
+			}
+		}
+		
+		if(hecho) {
+			usuarios.remove(indice);
+		}
+		return hecho;
+		
+	}
 	
 	public boolean confirmLogin(String id, String password) {
 		boolean login = false;
@@ -114,6 +131,7 @@ public class Centro implements Serializable {
 		this.loginAdmin = loginAdmin;
 	}
 	
-	//
+	
+	
 	
 }
