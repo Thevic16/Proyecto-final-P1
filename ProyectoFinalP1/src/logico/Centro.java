@@ -85,7 +85,7 @@ public class Centro implements Serializable {
 		Usuario user = usuarios.get(indice); 
 		
 		if(user instanceof Profesor) {
-			if(((Profesor) user).getEstudiantes().size() ==0) {
+			if(((Profesor) user).getEstudiantes().size() !=0) {
 				hecho = false; // si el profesor tiene estudiantes no se puede. 
 			}
 		}

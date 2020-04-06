@@ -138,121 +138,245 @@ public class FigurasCreadas extends JDialog {
 	
 	private void loadFiguras(int seleccion) {
 		tableModel.setRowCount(0);
-		switch (seleccion) {
-		case 0://Todos
-			String[] columnNames0 = {"Código", "Tipo","Área","Volumen"};
-			tableModel.setColumnIdentifiers(columnNames0);
-			fila = new Object[tableModel.getColumnCount()];//Esto hace que las filas se ajusten a 
-			//la cantidad de columnas según el tipo de figura a visualizar en la tabla.
-			for (Figura aux : centro.getLoginUser().getFiguras()) {
-				fila[0] = aux.getCodigo();
-				if(aux instanceof Cilindro)
-					fila[1] = "Cilíndro";
-				if(aux instanceof Cono)
-					fila[1] = "Cono";
-				if(aux instanceof Cubo)
-					fila[1] = "Cubo";
-				if(aux instanceof Esfera)
-					fila[1] = "Esfera";
-				if(aux instanceof Paralelepipedo)
-					fila[1] = "Paralelepípedo";
-				fila[2] = aux.area();
-				fila[3] = aux.volumen();
-				
-				tableModel.addRow(fila);
-			}
-			break;
+		
+		if(!centro.isLoginAdmin()) {
 			
-		case 1://Cilindros
-			String[] columnNames1 = {"Código","Radio", "Altura","Área L.","Área B.","Área Total"};
-			tableModel.setColumnIdentifiers(columnNames1);
-			fila = new Object[tableModel.getColumnCount()];
-			for (Figura aux : centro.getLoginUser().getFiguras()) {
-				if(aux instanceof Cilindro) {
-					fila[0] = ((Cilindro) aux).getCodigo();
-					fila[1] = ((Cilindro) aux).getRadio();
-					fila[2] = ((Cilindro) aux).getAltura();
-					fila[3] = ((Cilindro) aux).areaLateral();
-					fila[4] = ((Cilindro) aux).areaBase();
-					fila[5] = ((Cilindro) aux).area();
-					
-					tableModel.addRow(fila);
-				}
-			}
-			break;
-			
-		case 2://Conos
-			String[] columnNames2 = {"Código","Radio", "Altura","Área L.","Área B.","Área Total"};
-			tableModel.setColumnIdentifiers(columnNames2);
-			fila = new Object[tableModel.getColumnCount()];
-			for (Figura aux : centro.getLoginUser().getFiguras()) {
-				if(aux instanceof Cono) {
-					fila[0] = ((Cono) aux).getCodigo();
-					fila[1] = ((Cono) aux).getRadio();
-					fila[2] = ((Cono) aux).getAltura();
-					fila[3] = ((Cono) aux).areaLateral();
-					fila[4] = ((Cono) aux).areaBase();
-					fila[5] = ((Cono) aux).area();
-					
-					tableModel.addRow(fila);
-				}
-			}
-			break;
-			
-		case 3://Cubos
-			String[] columnNames3 = {"Código","Tamaño","Área Total","Volumen"};
-			tableModel.setColumnIdentifiers(columnNames3);
-			fila = new Object[tableModel.getColumnCount()];
-			for (Figura aux : centro.getLoginUser().getFiguras()) {
-				if(aux instanceof Cubo) {
-					fila[0] = ((Cubo) aux).getCodigo();
-					fila[1] = ((Cubo) aux).getTamano();
-					fila[2] = ((Cubo) aux).area();
-					fila[3] = ((Cubo) aux).volumen();
-					
-					tableModel.addRow(fila);
-				}
-			}
-			break;
-			
-		case 4://Esferas
-			String[] columnNames4 = {"Código","Radio", "Área Total","Volumen"};
-			tableModel.setColumnIdentifiers(columnNames4);
-			fila = new Object[tableModel.getColumnCount()];
-			for (Figura aux : centro.getLoginUser().getFiguras()) {
-				if(aux instanceof Esfera) {
-					fila[0] = ((Esfera) aux).getCodigo();
-					fila[1] = ((Esfera) aux).getRadio();
-					fila[2] = ((Esfera) aux).area();
-					fila[3] = ((Esfera) aux).volumen();
-					
-					tableModel.addRow(fila);
-				}
-			}
-			break;
-			
-		case 5://Paralelepípedos
-			String[] columnNames5 = {"Código","Longitud", "Altura","Anchura","Área L.","Área B.","Área Total","Volumen"};
-			tableModel.setColumnIdentifiers(columnNames5);
-			fila = new Object[tableModel.getColumnCount()];
-			for (Figura aux : centro.getLoginUser().getFiguras()) {
-				if(aux instanceof Paralelepipedo) {
+			switch (seleccion) {
+			case 0://Todos
+				String[] columnNames0 = {"Código", "Tipo","Área","Volumen"};
+				tableModel.setColumnIdentifiers(columnNames0);
+				fila = new Object[tableModel.getColumnCount()];//Esto hace que las filas se ajusten a 
+				//la cantidad de columnas según el tipo de figura a visualizar en la tabla.
+				for (Figura aux : centro.getLoginUser().getFiguras()) {
 					fila[0] = aux.getCodigo();
-					fila[1] = ((Paralelepipedo) aux).getLongitud();
-					fila[2] = ((Paralelepipedo) aux).getAltura();
-					fila[3] = ((Paralelepipedo) aux).getAnchura();
-					fila[4] = ((Paralelepipedo) aux).areaLateral();
-					fila[5] = ((Paralelepipedo) aux).areaBase();
-					fila[6] = ((Paralelepipedo) aux).area();
-					fila[7] = ((Paralelepipedo) aux).volumen();
+					if(aux instanceof Cilindro)
+						fila[1] = "Cilíndro";
+					if(aux instanceof Cono)
+						fila[1] = "Cono";
+					if(aux instanceof Cubo)
+						fila[1] = "Cubo";
+					if(aux instanceof Esfera)
+						fila[1] = "Esfera";
+					if(aux instanceof Paralelepipedo)
+						fila[1] = "Paralelepípedo";
+					fila[2] = aux.area();
+					fila[3] = aux.volumen();
 					
 					tableModel.addRow(fila);
 				}
+				break;
+				
+			case 1://Cilindros
+				String[] columnNames1 = {"Código","Radio", "Altura","Área L.","Área B.","Área Total"};
+				tableModel.setColumnIdentifiers(columnNames1);
+				fila = new Object[tableModel.getColumnCount()];
+				for (Figura aux : centro.getLoginUser().getFiguras()) {
+					if(aux instanceof Cilindro) {
+						fila[0] = ((Cilindro) aux).getCodigo();
+						fila[1] = ((Cilindro) aux).getRadio();
+						fila[2] = ((Cilindro) aux).getAltura();
+						fila[3] = ((Cilindro) aux).areaLateral();
+						fila[4] = ((Cilindro) aux).areaBase();
+						fila[5] = ((Cilindro) aux).area();
+						
+						tableModel.addRow(fila);
+					}
+				}
+				break;
+				
+			case 2://Conos
+				String[] columnNames2 = {"Código","Radio", "Altura","Área L.","Área B.","Área Total"};
+				tableModel.setColumnIdentifiers(columnNames2);
+				fila = new Object[tableModel.getColumnCount()];
+				for (Figura aux : centro.getLoginUser().getFiguras()) {
+					if(aux instanceof Cono) {
+						fila[0] = ((Cono) aux).getCodigo();
+						fila[1] = ((Cono) aux).getRadio();
+						fila[2] = ((Cono) aux).getAltura();
+						fila[3] = ((Cono) aux).areaLateral();
+						fila[4] = ((Cono) aux).areaBase();
+						fila[5] = ((Cono) aux).area();
+						
+						tableModel.addRow(fila);
+					}
+				}
+				break;
+				
+			case 3://Cubos
+				String[] columnNames3 = {"Código","Tamaño","Área Total","Volumen"};
+				tableModel.setColumnIdentifiers(columnNames3);
+				fila = new Object[tableModel.getColumnCount()];
+				for (Figura aux : centro.getLoginUser().getFiguras()) {
+					if(aux instanceof Cubo) {
+						fila[0] = ((Cubo) aux).getCodigo();
+						fila[1] = ((Cubo) aux).getTamano();
+						fila[2] = ((Cubo) aux).area();
+						fila[3] = ((Cubo) aux).volumen();
+						
+						tableModel.addRow(fila);
+					}
+				}
+				break;
+				
+			case 4://Esferas
+				String[] columnNames4 = {"Código","Radio", "Área Total","Volumen"};
+				tableModel.setColumnIdentifiers(columnNames4);
+				fila = new Object[tableModel.getColumnCount()];
+				for (Figura aux : centro.getLoginUser().getFiguras()) {
+					if(aux instanceof Esfera) {
+						fila[0] = ((Esfera) aux).getCodigo();
+						fila[1] = ((Esfera) aux).getRadio();
+						fila[2] = ((Esfera) aux).area();
+						fila[3] = ((Esfera) aux).volumen();
+						
+						tableModel.addRow(fila);
+					}
+				}
+				break;
+				
+			case 5://Paralelepípedos
+				String[] columnNames5 = {"Código","Longitud", "Altura","Anchura","Área L.","Área B.","Área Total","Volumen"};
+				tableModel.setColumnIdentifiers(columnNames5);
+				fila = new Object[tableModel.getColumnCount()];
+				for (Figura aux : centro.getLoginUser().getFiguras()) {
+					if(aux instanceof Paralelepipedo) {
+						fila[0] = aux.getCodigo();
+						fila[1] = ((Paralelepipedo) aux).getLongitud();
+						fila[2] = ((Paralelepipedo) aux).getAltura();
+						fila[3] = ((Paralelepipedo) aux).getAnchura();
+						fila[4] = ((Paralelepipedo) aux).areaLateral();
+						fila[5] = ((Paralelepipedo) aux).areaBase();
+						fila[6] = ((Paralelepipedo) aux).area();
+						fila[7] = ((Paralelepipedo) aux).volumen();
+						
+						tableModel.addRow(fila);
+					}
+				}
+				break;
+				
+			default:
+				break;
 			}
-			break;
 			
-		default:
-			break;
+		}
+		else {
+			
+			switch (seleccion) {
+			case 0://Todos
+				String[] columnNames0 = {"Código", "Tipo","Área","Volumen"};
+				tableModel.setColumnIdentifiers(columnNames0);
+				fila = new Object[tableModel.getColumnCount()];//Esto hace que las filas se ajusten a 
+				//la cantidad de columnas según el tipo de figura a visualizar en la tabla.
+				for (Figura aux : centro.getFiguras()) {
+					fila[0] = aux.getCodigo();
+					if(aux instanceof Cilindro)
+						fila[1] = "Cilíndro";
+					if(aux instanceof Cono)
+						fila[1] = "Cono";
+					if(aux instanceof Cubo)
+						fila[1] = "Cubo";
+					if(aux instanceof Esfera)
+						fila[1] = "Esfera";
+					if(aux instanceof Paralelepipedo)
+						fila[1] = "Paralelepípedo";
+					fila[2] = aux.area();
+					fila[3] = aux.volumen();
+					
+					tableModel.addRow(fila);
+				}
+				break;
+				
+			case 1://Cilindros
+				String[] columnNames1 = {"Código","Radio", "Altura","Área L.","Área B.","Área Total"};
+				tableModel.setColumnIdentifiers(columnNames1);
+				fila = new Object[tableModel.getColumnCount()];
+				for (Figura aux : centro.getFiguras()) {
+					if(aux instanceof Cilindro) {
+						fila[0] = ((Cilindro) aux).getCodigo();
+						fila[1] = ((Cilindro) aux).getRadio();
+						fila[2] = ((Cilindro) aux).getAltura();
+						fila[3] = ((Cilindro) aux).areaLateral();
+						fila[4] = ((Cilindro) aux).areaBase();
+						fila[5] = ((Cilindro) aux).area();
+						
+						tableModel.addRow(fila);
+					}
+				}
+				break;
+				
+			case 2://Conos
+				String[] columnNames2 = {"Código","Radio", "Altura","Área L.","Área B.","Área Total"};
+				tableModel.setColumnIdentifiers(columnNames2);
+				fila = new Object[tableModel.getColumnCount()];
+				for (Figura aux : centro.getFiguras()) {
+					if(aux instanceof Cono) {
+						fila[0] = ((Cono) aux).getCodigo();
+						fila[1] = ((Cono) aux).getRadio();
+						fila[2] = ((Cono) aux).getAltura();
+						fila[3] = ((Cono) aux).areaLateral();
+						fila[4] = ((Cono) aux).areaBase();
+						fila[5] = ((Cono) aux).area();
+						
+						tableModel.addRow(fila);
+					}
+				}
+				break;
+				
+			case 3://Cubos
+				String[] columnNames3 = {"Código","Tamaño","Área Total","Volumen"};
+				tableModel.setColumnIdentifiers(columnNames3);
+				fila = new Object[tableModel.getColumnCount()];
+				for (Figura aux : centro.getFiguras()) {
+					if(aux instanceof Cubo) {
+						fila[0] = ((Cubo) aux).getCodigo();
+						fila[1] = ((Cubo) aux).getTamano();
+						fila[2] = ((Cubo) aux).area();
+						fila[3] = ((Cubo) aux).volumen();
+						
+						tableModel.addRow(fila);
+					}
+				}
+				break;
+				
+			case 4://Esferas
+				String[] columnNames4 = {"Código","Radio", "Área Total","Volumen"};
+				tableModel.setColumnIdentifiers(columnNames4);
+				fila = new Object[tableModel.getColumnCount()];
+				for (Figura aux : centro.getFiguras()) {
+					if(aux instanceof Esfera) {
+						fila[0] = ((Esfera) aux).getCodigo();
+						fila[1] = ((Esfera) aux).getRadio();
+						fila[2] = ((Esfera) aux).area();
+						fila[3] = ((Esfera) aux).volumen();
+						
+						tableModel.addRow(fila);
+					}
+				}
+				break;
+				
+			case 5://Paralelepípedos
+				String[] columnNames5 = {"Código","Longitud", "Altura","Anchura","Área L.","Área B.","Área Total","Volumen"};
+				tableModel.setColumnIdentifiers(columnNames5);
+				fila = new Object[tableModel.getColumnCount()];
+				for (Figura aux : centro.getFiguras()) {
+					if(aux instanceof Paralelepipedo) {
+						fila[0] = aux.getCodigo();
+						fila[1] = ((Paralelepipedo) aux).getLongitud();
+						fila[2] = ((Paralelepipedo) aux).getAltura();
+						fila[3] = ((Paralelepipedo) aux).getAnchura();
+						fila[4] = ((Paralelepipedo) aux).areaLateral();
+						fila[5] = ((Paralelepipedo) aux).areaBase();
+						fila[6] = ((Paralelepipedo) aux).area();
+						fila[7] = ((Paralelepipedo) aux).volumen();
+						
+						tableModel.addRow(fila);
+					}
+				}
+				break;
+				
+			default:
+				break;
+			}
 		}
 		//PARA LAS OPCIONES EN TABLA
 		table.setModel(tableModel);
