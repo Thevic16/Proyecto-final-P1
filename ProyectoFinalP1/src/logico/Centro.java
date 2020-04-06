@@ -132,6 +132,30 @@ public class Centro implements Serializable {
 	}
 	
 	
+	public int[] getCantidadFigurasByTipo() {
+		int [] cantidad = new int[5];
+		
+		for (Figura figu : figuras) {
+			if(figu instanceof Cilindro) {
+				cantidad[0]++;
+			}
+			else if(figu instanceof Cono) {
+				cantidad[1]++;
+			}
+			else if(figu instanceof Cubo) {
+				cantidad[2]++;
+			}
+			else if(figu instanceof Esfera) {
+				cantidad[3]++;
+			}
+			else if(figu instanceof Paralelepipedo) {
+				cantidad[4]++;
+			}
+			
+		}
+		
+		return cantidad;
+	}
 	
 	
 }

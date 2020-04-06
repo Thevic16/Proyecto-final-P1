@@ -99,6 +99,18 @@ public class PrincipalAdmin extends JFrame {
 			}
 		});
 		mnNewMenu_1.add(mntmNewMenuItem);
+		
+		JMenu mnNewMenu_2 = new JMenu("Estad\u00EDstica");
+		menuBar.add(mnNewMenu_2);
+		
+		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Popularidad figuras ");
+		mntmNewMenuItem_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				GraficoFigurasCreadas graficoFigurasCreadas = new GraficoFigurasCreadas(centro);
+				graficoFigurasCreadas.setVisible(true);
+			}
+		});
+		mnNewMenu_2.add(mntmNewMenuItem_2);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
