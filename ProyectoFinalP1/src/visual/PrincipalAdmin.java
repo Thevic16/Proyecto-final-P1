@@ -111,6 +111,15 @@ public class PrincipalAdmin extends JFrame {
 			}
 		});
 		mnNewMenu_2.add(mntmNewMenuItem_2);
+		
+		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Promedio areas figuras");
+		mntmNewMenuItem_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PromAreaGrafica promAreaGrafica = new PromAreaGrafica(centro);
+				promAreaGrafica.setVisible(true);
+			}
+		});
+		mnNewMenu_2.add(mntmNewMenuItem_3);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));

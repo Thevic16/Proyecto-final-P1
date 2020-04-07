@@ -157,5 +157,176 @@ public class Centro implements Serializable {
 		return cantidad;
 	}
 	
+	public int promedioAreaCilindros(){
+		
+		float suma = 0;
+		int contador = 0;
+		
+		for (Figura figura : figuras) {
+			if(figura instanceof Cilindro) {
+				suma += figura.area();
+				contador++;
+			}
+			
+		}
+		
+		return (int) (suma/contador);
+		
+	}
+	
+	public int promedioAreaConos(){
+		
+		float suma = 0;
+		int contador = 0;
+		
+		for (Figura figura : figuras) {
+			if(figura instanceof Cono) {
+				suma += figura.area();
+				contador++;
+			}
+			
+		}
+		
+		return (int) (suma/contador);
+		
+	}
+	
+	public int promedioAreaCubos(){
+		
+		float suma = 0;
+		int contador = 0;
+		
+		for (Figura figura : figuras) {
+			if(figura instanceof Cubo) {
+				suma += figura.area();
+				contador++;
+			}
+			
+		}
+		
+		return (int) (suma/contador);
+		
+	}
+	
+	public int promedioAreaEsferas(){
+		
+		float suma = 0;
+		int contador = 0;
+		
+		for (Figura figura : figuras) {
+			if(figura instanceof Esfera) {
+				suma += figura.area();
+				contador++;
+			}
+			
+		}
+		
+		return (int) (suma/contador);
+		
+	}
+	
+	public int promedioAreaParalelepidedos(){
+		
+		float suma = 0;
+		int contador = 0;
+		
+		for (Figura figura : figuras) {
+			if(figura instanceof Paralelepipedo) {
+				suma += figura.area();
+				contador++;
+			}
+			
+		}
+		
+		return (int) (suma/contador);
+		
+	}
+	
+
+		public int promedioVolumenCilindros(){
+		
+		float suma = 0;
+		int contador = 0;
+		
+		for (Figura figura : figuras) {
+			if(figura instanceof Cilindro) {
+				suma += figura.volumen();
+				contador++;
+			}
+
+		}
+		
+		return (int) (suma/contador);
+		
+	}
+	
+		public int promedioVolumenEsferas(){
+			
+			float suma = 0;
+			int contador = 0;
+			
+			for (Figura figura : figuras) {
+				if(figura instanceof Esfera) {
+					suma += figura.volumen();
+					contador++;
+				}
+
+			}
+			
+			return (int) (suma/contador);
+			
+		}
+		
+		public int promedioVolumenConos(){
+			
+			float suma = 0;
+			int contador = 0;
+			
+			for (Figura figura : figuras) {
+				if(figura instanceof Cono) {
+					suma += figura.volumen();
+					contador++;
+				}
+
+			}
+			
+			return (int) (suma/contador);
+			
+		}
+	
+		public int promedioVolumenCubo(){
+			
+			float suma = 0;
+			int contador = 0;
+			
+			for (Figura figura : figuras) {
+				if(figura instanceof Cubo) {
+					suma += figura.volumen();
+					contador++;
+				}
+
+			}
+			
+			return (int) (suma/contador);
+			
+		}
+		
+		public int promedioVolumenParalelepipedos(){
+			
+			float suma = 0;
+			int contador = 0;
+			
+			for (Figura figura : figuras) {
+				if(figura instanceof Paralelepipedo) {
+					suma += figura.volumen();
+					contador++;
+				}
+
+			}
+			
+			return (int) (suma/contador);
+			
+		}
+		
 	
 }
