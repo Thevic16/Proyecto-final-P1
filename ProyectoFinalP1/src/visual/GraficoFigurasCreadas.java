@@ -1,5 +1,6 @@
 package visual;
 
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -11,7 +12,7 @@ import org.jfree.data.general.DefaultPieDataset;
 import logico.Centro;
 import logico.Figura;
 
-public class GraficoFigurasCreadas extends JFrame{
+public class GraficoFigurasCreadas extends JDialog{
     JPanel panel;
     private Centro centro;
     
@@ -20,7 +21,6 @@ public class GraficoFigurasCreadas extends JFrame{
         setTitle("Gráfica pastel de las figuras creadas por cantidad.");
         setSize(800,600);
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
         init();
     }

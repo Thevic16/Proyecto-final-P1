@@ -112,14 +112,24 @@ public class PrincipalAdmin extends JFrame {
 		});
 		mnNewMenu_2.add(mntmNewMenuItem_2);
 		
-		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Promedio areas figuras");
-		mntmNewMenuItem_3.addActionListener(new ActionListener() {
+		JMenuItem mntmPromedioAreasFiguras = new JMenuItem("Promedio areas figuras");
+		mntmPromedioAreasFiguras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				PromAreaGrafica promAreaGrafica = new PromAreaGrafica(centro);
 				promAreaGrafica.setVisible(true);
 			}
 		});
-		mnNewMenu_2.add(mntmNewMenuItem_3);
+		mnNewMenu_2.add(mntmPromedioAreasFiguras);
+		
+		JMenuItem mntmPromedioVolumenFiguras = new JMenuItem("Promedio volumen figuras");
+		mntmPromedioVolumenFiguras.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PromVolumenGrafica promVolumenGrafica = new PromVolumenGrafica(centro);
+				promVolumenGrafica.setModal(true);
+				promVolumenGrafica.setVisible(true);
+			}
+		});
+		mnNewMenu_2.add(mntmPromedioVolumenFiguras);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));

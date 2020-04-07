@@ -1,7 +1,6 @@
 package visual;
 
 import java.awt.Color;
-import java.awt.Dialog;
 
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -16,16 +15,15 @@ import org.jfree.data.category.DefaultCategoryDataset;
 
 import logico.Centro;
 
-public class PromAreaGrafica extends JDialog{
+public class PromVolumenGrafica extends JDialog{
     JPanel panel;
     private Centro centro;
     
-    public PromAreaGrafica(Centro centro){
+    public PromVolumenGrafica(Centro centro){
     	this.centro = centro;
-        setTitle("Grafica promedio de areas figuras");
+        setTitle("Grafica promedio de volumen figuras");
         setSize(800,600);
         setLocationRelativeTo(null);
-
         setVisible(true);
         init();
     }
@@ -36,25 +34,25 @@ public class PromAreaGrafica extends JDialog{
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         // Fuente de Datos
         if(centro.isLoginAdmin()) {
-            dataset.setValue(centro.promedioAreaCilindros(), "Cilindro", "Promedio Area total");
-            dataset.setValue(centro.promedioAreaConos(), "Cono", "Promedio Area total");
-            dataset.setValue(centro.promedioAreaCubos(), "Cubo", "Promedio Area total");
-            dataset.setValue(centro.promedioAreaEsferas(), "Esfera", "Promedio Area total");
-            dataset.setValue(centro.promedioAreaParalelepidedos(), "Paralelepípedo", "Promedio Area total");
+            dataset.setValue(centro.promedioVolumenCilindros(), "Cilindro", "Promedio Volumen total");
+            dataset.setValue(centro.promedioVolumenConos(), "Cono", "Promedio Volumen total");
+            dataset.setValue(centro.promedioVolumenCubo(), "Cubo", "Promedio Volumen total");
+            dataset.setValue(centro.promedioVolumenEsferas(), "Esfera", "Promedio Volumen total");
+            dataset.setValue(centro.promedioVolumenParalelepipedos(), "Paralelepípedo", "Promedio Volumen total");
         }
         else {
-            dataset.setValue(centro.getLoginUser().promedioAreaCilindros(), "Cilindro", "Promedio Area total");
-            dataset.setValue(centro.getLoginUser().promedioAreaConos(), "Cono", "Promedio Area total");
-            dataset.setValue(centro.getLoginUser().promedioAreaCubos(), "Cubo", "Promedio Area total");
-            dataset.setValue(centro.getLoginUser().promedioAreaEsferas(), "Esfera", "Promedio Area total");
-            dataset.setValue(centro.getLoginUser().promedioAreaParalelepidedos(), "Paralelepípedo", "Promedio Area total");
+            dataset.setValue(centro.getLoginUser().promedioVolumenCilindros(), "Cilindro", "Promedio Volumen total");
+            dataset.setValue(centro.getLoginUser().promedioVolumenConos(), "Cono", "Promedio Volumen total");
+            dataset.setValue(centro.getLoginUser().promedioVolumenCubo(), "Cubo", "Promedio Volumen total");
+            dataset.setValue(centro.getLoginUser().promedioVolumenEsferas(), "Esfera", "Promedio Volumen total");
+            dataset.setValue(centro.getLoginUser().promedioVolumenParalelepipedos(), "Paralelepípedo", "Promedio Volumen total");
         	
         }
 
 
         // Creando el Grafico
         JFreeChart chart = ChartFactory.createBarChart3D
-        ("Areas de figuras por tipo","Tipos de figuras", "Magnitud del area promedio", 
+        ("Volumenes de figuras por tipo","Tipos de figuras", "Magnitud del volumen promedio", 
         dataset, PlotOrientation.VERTICAL, true,true, false);
         chart.setBackgroundPaint(Color.cyan);
         chart.getTitle().setPaint(Color.black); 
