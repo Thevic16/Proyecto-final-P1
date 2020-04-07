@@ -3,6 +3,8 @@ package logico;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+
+
 public class Centro implements Serializable {
 	private ArrayList<Figura>figuras; 
 	private ArrayList<Usuario>usuarios;
@@ -79,10 +81,10 @@ public class Centro implements Serializable {
 		codigoFiguras++;
 		figuras.add(figura);
 	}
-	public boolean removeUser(int indice) {
+	public boolean removeUser(Usuario user) {
 		boolean hecho = true;
 		
-		Usuario user = usuarios.get(indice); 
+		Usuario aux = user;
 		
 		if(user instanceof Profesor) {
 			if(((Profesor) user).getEstudiantes().size() !=0) {
@@ -91,7 +93,7 @@ public class Centro implements Serializable {
 		}
 		
 		if(hecho) {
-			usuarios.remove(indice);
+			usuarios.remove(aux);
 		}
 		return hecho;
 		
@@ -328,5 +330,64 @@ public class Centro implements Serializable {
 			
 		}
 		
+		//Arreglos de arreglos 
+		public ArrayList<ArrayList<Figura>> getFigurasByTipo(){
+	        ArrayList<ArrayList<Figura> > FigurasByTipo =  new ArrayList<ArrayList<Figura> >(); 
+	        
+	        ArrayList<Figura> Cilindrico = new ArrayList<Figura>();
+	        ArrayList<Figura> Cono = new ArrayList<Figura>();
+	        ArrayList<Figura> Cubo = new ArrayList<Figura>();
+	        ArrayList<Figura> Esferico = new ArrayList<Figura>();
+	        ArrayList<Figura> Paralelepipedo = new ArrayList<Figura>();
+	        
+			for(Figura figu:figuras) {
+				if(figu instanceof Cilindro) {
+					Cilindrico.add(figu);
+				}
+				else if(figu instanceof Cono) {
+					Cono.add(figu);
+				}
+				else if(figu instanceof Cubo) {
+					Cubo.add(figu);
+				}
+				else if(figu instanceof Esfera) {
+					Esferico.add(figu);
+				}
+				else if(figu instanceof Paralelepipedo) {
+					Paralelepipedo.add(figu);
+				}
+				
 	
+			}
+			FigurasByTipo.add(Cilindrico);
+			FigurasByTipo.add(Cono);
+			FigurasByTipo.add(Cubo);
+			FigurasByTipo.add(Esferico);
+			FigurasByTipo.add(Paralelepipedo);
+
+			return FigurasByTipo;	
+		}
+	
+		//Arreglos de arreglos 
+		public ArrayList<ArrayList<Usuario>> getUsuariosByTipo(){
+	        ArrayList<ArrayList<Usuario> > UsuariosByTipo =  new ArrayList<ArrayList<Usuario> >(); 
+	        
+	        ArrayList<Usuario> estudiantes = new ArrayList<Usuario>();
+	        ArrayList<Usuario> profesores = new ArrayList<Usuario>();
+
+	        
+			for(Usuario user:usuarios) {
+				if(user instanceof Estudiante) {
+					estudiantes.add(user);
+				}
+				else if(user instanceof Profesor) {
+					profesores.add(user);
+				}
+			}
+			UsuariosByTipo.add(estudiantes);
+			UsuariosByTipo.add(profesores);
+
+			
+			return UsuariosByTipo;	
+		}
 }
