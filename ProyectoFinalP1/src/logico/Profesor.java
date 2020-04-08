@@ -20,6 +20,9 @@ public class Profesor extends Usuario {
 		this.estudiantes = estudiantes;
 	}
 
+	public void insertarEstudiante(Estudiante estudiante) {
+		estudiantes.add(estudiante);
+	}
 	
 	
 }
