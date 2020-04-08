@@ -99,7 +99,7 @@ public class CrearFigura extends JDialog {
 		
 		txtFiguraID = new JTextField();
 		txtFiguraID.setEditable(false);
-		txtFiguraID.setText("FIG-#"+0);
+		txtFiguraID.setText("FIG-#"+centro.getFigura().size());
 		//txtFiguraID.setText("FIG-#"+centro.getCodigoFiguras());
 		txtFiguraID.setBounds(66, 17, 82, 20);
 		panelTipoFigura.add(txtFiguraID);
