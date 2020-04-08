@@ -85,6 +85,36 @@ public class PrincipalUsuario extends JFrame {
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem);
+		JMenu mnEstadisticas = new JMenu("Estad\u00EDstica");
+		menuBar.add(mnEstadisticas);
+		
+		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Popularidad figuras ");
+		mntmNewMenuItem_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				GraficoFigurasCreadas graficoFigurasCreadas = new GraficoFigurasCreadas(centro);
+				graficoFigurasCreadas.setVisible(true);
+			}
+		});
+		mnEstadisticas.add(mntmNewMenuItem_2);
+		
+		JMenuItem mntmPromedioAreasFiguras = new JMenuItem("Promedio areas figuras");
+		mntmPromedioAreasFiguras.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PromAreaGrafica promAreaGrafica = new PromAreaGrafica(centro);
+				promAreaGrafica.setVisible(true);
+			}
+		});
+		mnEstadisticas.add(mntmPromedioAreasFiguras);
+		
+		JMenuItem mntmPromedioVolumenFiguras = new JMenuItem("Promedio volumen figuras");
+		mntmPromedioVolumenFiguras.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PromVolumenGrafica promVolumenGrafica = new PromVolumenGrafica(centro);
+				promVolumenGrafica.setModal(true);
+				promVolumenGrafica.setVisible(true);
+			}
+		});
+		mnEstadisticas.add(mntmPromedioVolumenFiguras);
 		
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Listar figuras creadas");
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {

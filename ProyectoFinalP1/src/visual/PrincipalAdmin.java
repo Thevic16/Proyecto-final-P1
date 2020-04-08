@@ -100,8 +100,8 @@ public class PrincipalAdmin extends JFrame {
 		});
 		mnNewMenu_1.add(mntmNewMenuItem);
 		
-		JMenu mnNewMenu_2 = new JMenu("Estad\u00EDstica");
-		menuBar.add(mnNewMenu_2);
+		JMenu mnEstadisticas = new JMenu("Estad\u00EDstica");
+		menuBar.add(mnEstadisticas);
 		
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Popularidad figuras ");
 		mntmNewMenuItem_2.addActionListener(new ActionListener() {
@@ -110,7 +110,7 @@ public class PrincipalAdmin extends JFrame {
 				graficoFigurasCreadas.setVisible(true);
 			}
 		});
-		mnNewMenu_2.add(mntmNewMenuItem_2);
+		mnEstadisticas.add(mntmNewMenuItem_2);
 		
 		JMenuItem mntmPromedioAreasFiguras = new JMenuItem("Promedio areas figuras");
 		mntmPromedioAreasFiguras.addActionListener(new ActionListener() {
@@ -119,7 +119,7 @@ public class PrincipalAdmin extends JFrame {
 				promAreaGrafica.setVisible(true);
 			}
 		});
-		mnNewMenu_2.add(mntmPromedioAreasFiguras);
+		mnEstadisticas.add(mntmPromedioAreasFiguras);
 		
 		JMenuItem mntmPromedioVolumenFiguras = new JMenuItem("Promedio volumen figuras");
 		mntmPromedioVolumenFiguras.addActionListener(new ActionListener() {
@@ -129,7 +129,7 @@ public class PrincipalAdmin extends JFrame {
 				promVolumenGrafica.setVisible(true);
 			}
 		});
-		mnNewMenu_2.add(mntmPromedioVolumenFiguras);
+		mnEstadisticas.add(mntmPromedioVolumenFiguras);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
