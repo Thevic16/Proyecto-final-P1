@@ -35,7 +35,7 @@ public class PrincipalAdmin extends JFrame {
 			public void run() {
 				Centro centro = Centro.getInstance();
 				try {
-					Principal frame = new Principal(centro);
+					PrincipalAdmin frame = new PrincipalAdmin(centro);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

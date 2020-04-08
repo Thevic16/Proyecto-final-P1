@@ -21,7 +21,7 @@ import javax.swing.JMenuItem;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class Principal extends JFrame {
+public class PrincipalUsuario extends JFrame {
 
 	private JPanel contentPane;
 	private Centro centro;
@@ -35,7 +35,7 @@ public class Principal extends JFrame {
 			public void run() {
 				Centro centro = Centro.getInstance();
 				try {
-					Principal frame = new Principal(centro);
+					PrincipalUsuario frame = new PrincipalUsuario(centro);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -47,7 +47,7 @@ public class Principal extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Principal(Centro centroCargado) {
+	public PrincipalUsuario(Centro centroCargado) {
 		this.centro = centroCargado;
 		
 		addWindowListener(new WindowAdapter() {

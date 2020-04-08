@@ -127,7 +127,7 @@ public class Login extends JFrame {
 					frame.setVisible(true);
 				}
 				else if(centro.confirmLogin(IDtxt.getText(), contrasenaTxt.getText())){
-					Principal frame = new Principal(centro);
+					PrincipalUsuario frame = new PrincipalUsuario(centro);
 					dispose();
 					frame.setVisible(true);
 				}
