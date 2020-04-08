@@ -259,5 +259,47 @@ public abstract class Usuario implements Serializable {
 			
 		}
 		
+		//Arreglos de arreglos 
+		public ArrayList<ArrayList<Figura>> getFigurasByTipo(){
+	        ArrayList<ArrayList<Figura> > FigurasByTipo =  new ArrayList<ArrayList<Figura> >(); 
+	        
+	        ArrayList<Figura> Cilindrico = new ArrayList<Figura>();
+	        ArrayList<Figura> Cono = new ArrayList<Figura>();
+	        ArrayList<Figura> Cubo = new ArrayList<Figura>();
+	        ArrayList<Figura> Esferico = new ArrayList<Figura>();
+	        ArrayList<Figura> Paralelepipedo = new ArrayList<Figura>();
+	        
+			for(Figura figu:figuras) {
+				if(figu instanceof Cilindro) {
+					Cilindrico.add(figu);
+				}
+				else if(figu instanceof Cono) {
+					Cono.add(figu);
+				}
+				else if(figu instanceof Cubo) {
+					Cubo.add(figu);
+				}
+				else if(figu instanceof Esfera) {
+					Esferico.add(figu);
+				}
+				else if(figu instanceof Paralelepipedo) {
+					Paralelepipedo.add(figu);
+				}
+				
+	
+			}
+			FigurasByTipo.add(Cilindrico);
+			FigurasByTipo.add(Cono);
+			FigurasByTipo.add(Cubo);
+			FigurasByTipo.add(Esferico);
+			FigurasByTipo.add(Paralelepipedo);
+
+			return FigurasByTipo;	
+		}
+	
+		public void removeFigura(Figura figu) {
+			figuras.remove(figu);	
+		}
+		
 
 }

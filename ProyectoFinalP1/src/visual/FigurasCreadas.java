@@ -34,11 +34,14 @@ import javax.swing.border.SoftBevelBorder;
 
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.ScrollPaneConstants;
 import java.awt.ScrollPane;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class FigurasCreadas extends JDialog {
 
@@ -49,6 +52,9 @@ public class FigurasCreadas extends JDialog {
 	private JComboBox cbxTipoFiguras;
 	private JScrollPane scrollPane;
 	private Centro centro;
+	
+	private JButton btnEliminar;
+	private int selectedRow = -1; // parte de seleccionar
 	
 	
 	/**
@@ -92,6 +98,16 @@ public class FigurasCreadas extends JDialog {
 		panel.add(scrollPane);
 		
 		table = new JTable();
+		table.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				selectedRow = table.getSelectedRow();
+				if(selectedRow>-1) {
+					btnEliminar.setEnabled(true);
+
+				}
+			}
+		});
 		table.setBackground(UIManager.getColor("Table.background"));
 		tableModel = new DefaultTableModel();
 		String[] columnNames0 = {"Código", "Tipo","Área","Volumen"};
@@ -129,8 +145,73 @@ public class FigurasCreadas extends JDialog {
 					}
 				});
 				
-				JButton btnVista3D = new JButton("Vista 3D");
-				buttonPane.add(btnVista3D);
+				btnEliminar = new JButton("Eliminar");
+				btnEliminar.setEnabled(false);
+				btnEliminar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+
+												
+						int selection = cbxTipoFiguras.getSelectedIndex();
+						
+						if(centro.isLoginAdmin()) {
+							JOptionPane.showMessageDialog(null, "El administrador no tiene permiso de eliminar las figuras de los usuarios", "Información", JOptionPane.INFORMATION_MESSAGE);
+						}
+						else {
+							int option = JOptionPane.showConfirmDialog(null, "¿Esta seguro desea eliminar la figura?", "Eliminar", JOptionPane.WARNING_MESSAGE);
+							
+							if(option == 0) {
+							JOptionPane.showMessageDialog(null, "Operación Realizada", "Información", JOptionPane.INFORMATION_MESSAGE);
+							
+							Figura aux = null;
+							
+							if(selection == 0) {
+								aux = centro.getFiguras().get(selectedRow);
+								
+								centro.getLoginUser().removeFigura(aux);
+								centro.removeFigura(aux);
+							}
+							else if(selection == 1) {
+								aux = centro.getFigurasByTipo().get(0).get(selectedRow);
+								
+								centro.getLoginUser().removeFigura(aux);
+								centro.removeFigura(aux);
+							}
+							else if(selection == 2) {
+								aux = centro.getFigurasByTipo().get(1).get(selectedRow);
+
+								centro.getLoginUser().removeFigura(aux);
+								centro.removeFigura(aux);
+							}
+							else if(selection == 3) {
+								aux = centro.getFigurasByTipo().get(2).get(selectedRow);
+							
+								centro.getLoginUser().removeFigura(aux);
+								centro.removeFigura(aux);
+							}
+							else if(selection == 4) {
+								aux = centro.getFigurasByTipo().get(3).get(selectedRow);
+							
+								centro.getLoginUser().removeFigura(aux);
+								centro.removeFigura(aux);
+							}
+							else if(selection == 5) {
+								aux = centro.getFigurasByTipo().get(4).get(selectedRow);
+							
+								centro.getLoginUser().removeFigura(aux);
+								centro.removeFigura(aux);
+							}
+							
+						}
+						
+						loadFiguras(selection);
+						btnEliminar.setEnabled(false);
+						
+						}
+						
+						
+					}
+				});
+				buttonPane.add(btnEliminar);
 				btnCerrar.setActionCommand("Cancel");
 				buttonPane.add(btnCerrar);
 			}
@@ -384,7 +465,5 @@ public class FigurasCreadas extends JDialog {
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		table.getTableHeader().setReorderingAllowed(false);	
 	}
-	
-	
 }
 			

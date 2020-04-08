@@ -99,6 +99,11 @@ public class Centro implements Serializable {
 		
 	}
 	
+	public void removeFigura(Figura figu) {
+		figuras.remove(figu);	
+	}
+	
+	
 	public boolean confirmLogin(String id, String password) {
 		boolean login = false;
 		System.out.println("Usuarios size:"+usuarios.size());

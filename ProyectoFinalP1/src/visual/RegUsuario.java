@@ -152,8 +152,9 @@ public class RegUsuario extends JDialog {
 							insertUsuario(teacher);
 						}else if(rdbtnEstudiante.isSelected()) {
 							Estudiante student = new Estudiante(txtNombre.getText(), txtID.getText(), txtApellido.getText(), txtPassword.getText());
-							insertUsuario(student);						
+							insertUsuario(student);	
 						}
+
 					}
 					
 				});
@@ -163,6 +164,11 @@ public class RegUsuario extends JDialog {
 			}
 			{
 				JButton btnCancelar = new JButton("Cancelar");
+				btnCancelar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						dispose();
+					}
+				});
 				btnCancelar.setActionCommand("Cancel");
 				buttonPane.add(btnCancelar);
 			}
