@@ -10,6 +10,7 @@ import javax.swing.border.EmptyBorder;
 
 
 import logico.Centro;
+import logico.Estudiante;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -127,9 +128,17 @@ public class Login extends JFrame {
 					frame.setVisible(true);
 				}
 				else if(centro.confirmLogin(IDtxt.getText(), contrasenaTxt.getText())){
-					PrincipalUsuario frame = new PrincipalUsuario(centro);
-					dispose();
-					frame.setVisible(true);
+					if(centro.getLoginUser() instanceof Estudiante) {
+						PrincipalEstudiante frame = new PrincipalEstudiante(centro);
+						dispose();
+						frame.setVisible(true);
+					}
+					else {
+						PrincipalProfesor frame = new PrincipalProfesor(centro);
+						dispose();
+						frame.setVisible(true);
+					}
+
 				}
 				else {
 					JOptionPane.showMessageDialog(null, "Error! ID o usuario no es el correcto!", "Información", JOptionPane.ERROR_MESSAGE);

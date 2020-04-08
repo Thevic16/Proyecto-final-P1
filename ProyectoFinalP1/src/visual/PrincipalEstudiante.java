@@ -21,7 +21,7 @@ import javax.swing.JMenuItem;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class PrincipalUsuario extends JFrame {
+public class PrincipalEstudiante extends JFrame {
 
 	private JPanel contentPane;
 	private Centro centro;
@@ -35,7 +35,7 @@ public class PrincipalUsuario extends JFrame {
 			public void run() {
 				Centro centro = Centro.getInstance();
 				try {
-					PrincipalUsuario frame = new PrincipalUsuario(centro);
+					PrincipalEstudiante frame = new PrincipalEstudiante(centro);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -47,7 +47,7 @@ public class PrincipalUsuario extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public PrincipalUsuario(Centro centroCargado) {
+	public PrincipalEstudiante(Centro centroCargado) {
 		this.centro = centroCargado;
 		
 		addWindowListener(new WindowAdapter() {
@@ -88,7 +88,7 @@ public class PrincipalUsuario extends JFrame {
 		JMenu mnEstadisticas = new JMenu("Estad\u00EDstica");
 		menuBar.add(mnEstadisticas);
 		
-		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Popularidad figuras ");
+		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Figuras por cantidad ");
 		mntmNewMenuItem_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				GraficoFigurasCreadas graficoFigurasCreadas = new GraficoFigurasCreadas(centro);
