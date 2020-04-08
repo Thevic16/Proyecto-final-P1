@@ -73,6 +73,7 @@ public class FigurasCreadas extends JDialog {
 		setBackground(new Color(176, 224, 230));
 		setTitle("Figuras Creadas");
 		setBounds(100, 100, 577, 421);
+		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);

@@ -85,6 +85,7 @@ public class CrearFigura extends JDialog {
 		contentPanel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
+		setLocationRelativeTo(null);
 		
 		JPanel panelTipoFigura = new JPanel();
 		panelTipoFigura.setBorder(new TitledBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null), "Tipo de Figura", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));

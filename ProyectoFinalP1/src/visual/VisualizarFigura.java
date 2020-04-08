@@ -41,6 +41,7 @@ public class VisualizarFigura extends JDialog {
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
+		setLocationRelativeTo(null);
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new TitledBorder(null, "Informaci\u00F3n de Figura", TitledBorder.LEADING, TitledBorder.TOP, null, null));

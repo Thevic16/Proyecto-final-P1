@@ -55,6 +55,7 @@ public class RegUsuario extends JDialog {
 		this.educativo = centro;
 		setTitle("Registrar");
 		setBounds(100, 100, 481, 353);
+		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new TitledBorder(null, "Informaci\u00F3n de Usuario", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);

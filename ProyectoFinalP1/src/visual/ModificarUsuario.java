@@ -53,6 +53,7 @@ public class ModificarUsuario extends JDialog {
 		this.user = user;
 		setTitle("Registrar");
 		setBounds(100, 100, 481, 300);
+		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new TitledBorder(null, "Informaci\u00F3n de Usuario", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);

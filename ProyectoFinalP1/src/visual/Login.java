@@ -1,6 +1,7 @@
 package visual;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -39,6 +40,7 @@ public class Login extends JFrame {
 	private JTextField IDtxt;
 	private JTextField contrasenaTxt;
 	private Centro centro;
+
 
 	/**
 	 * Launch the application.
@@ -83,6 +85,8 @@ public class Login extends JFrame {
 		}
 		this.centro=aux;
 		
+
+		setLocationRelativeTo(null);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
