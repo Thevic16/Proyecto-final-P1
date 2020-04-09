@@ -25,4 +25,23 @@ public class Profesor extends Usuario {
 	}
 	
 	
+	public Estudiante buscarEstudianteByID(String ID) {
+		Estudiante est = null;
+		boolean find = false;
+		int i = 0;
+		while (i < estudiantes.size() && !find) {
+			if(estudiantes.get(i).getID().equalsIgnoreCase(ID)){
+				est = estudiantes.get(i);
+				find = true;
+			}
+			i++;
+		}
+		return est;
+	}
+	
+	public void removeEstudiante(Estudiante aux) {
+		estudiantes.remove(aux);
+	}
+	
+	
 }
