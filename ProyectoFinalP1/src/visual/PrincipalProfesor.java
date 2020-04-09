@@ -125,6 +125,15 @@ public class PrincipalProfesor extends JFrame {
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem_1);
+		
+		JMenu mnEstudiantes = new JMenu("Estudiantes");
+		menuBar.add(mnEstudiantes);
+		
+		JMenuItem mntmMisEstudiantes = new JMenuItem("Mis Estudiantes");
+		mnEstudiantes.add(mntmMisEstudiantes);
+		
+		JMenuItem mntmFigurasEstudiantes = new JMenuItem("Figuras de Estudiantes");
+		mnEstudiantes.add(mntmFigurasEstudiantes);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
