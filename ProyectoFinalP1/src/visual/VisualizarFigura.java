@@ -181,10 +181,10 @@ public class VisualizarFigura extends JDialog {
 			Cubo3D.VisualizarFigura("Cubo", (((Cilindro) figure).getRadio())/100, colorFigura());
 		}
 		if(figure instanceof Esfera) {
-			Esfera3D.VisualizarFigura("Cono", (((Cilindro) figure).getRadio())/100, colorFigura());
+			Esfera3D.VisualizarFigura("Esfera", (((Cilindro) figure).getRadio())/100, colorFigura());
 		}
 		if(figure instanceof Paralelepipedo) {
-			Paralelepipedo3D.VisualizarFigura("Cilindro", (((Paralelepipedo) figure).getLongitud())/100, (((Paralelepipedo) figure).getAltura())/100, (((Paralelepipedo) figure).getAnchura())/100, colorFigura());
+			Paralelepipedo3D.VisualizarFigura("Paralelepipedo", (((Paralelepipedo) figure).getLongitud())/100, (((Paralelepipedo) figure).getAltura())/100, (((Paralelepipedo) figure).getAnchura())/100, colorFigura());
 		}		
 	}
 	
