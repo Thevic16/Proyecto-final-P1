@@ -194,7 +194,7 @@ simpleU.getViewingPlatform().setNominalViewingTransform();
 
 
 
-public static void VisualidarFigura(String nombre,float radius,float height,String color) {
+public static void VisualizarFigura(String nombre,float radius,float height,String color) {
 	
 	Color aux = null;
 	
@@ -222,7 +222,7 @@ public static void VisualidarFigura(String nombre,float radius,float height,Stri
 	else if(color.equalsIgnoreCase("Naranja")) {
 		aux = Color.orange;
 	}
-	else if(color.equalsIgnoreCase("Rosado")) {
+	else if(color.equalsIgnoreCase("Rosa")) {
 		aux = Color.pink;
 	}
 	else if(color.equalsIgnoreCase("Rojo")) {
@@ -253,7 +253,7 @@ public static void VisualidarFigura(String nombre,float radius,float height,Stri
 
 
 public static void main(String[] argv) {
-	VisualidarFigura("Cilindro",0.1f, 0.1f,"Amarillo");
+	VisualizarFigura("Cilindro",0.1f, 0.1f,"Amarillo");
 	
 
 return;

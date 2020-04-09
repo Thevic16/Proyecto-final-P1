@@ -399,7 +399,7 @@ public class Centro implements Serializable {
 			return UsuariosByTipo;	
 		}
 		
-		public Figura getFiguraByCode(String code) {
+		public Figura findFiguraByCode(String code) {
 			Figura aux = null;
 			int i = 0;
 			boolean encontrado = false;

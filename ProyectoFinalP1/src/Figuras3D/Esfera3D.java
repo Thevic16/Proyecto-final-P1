@@ -188,7 +188,7 @@ simpleU.getViewingPlatform().setNominalViewingTransform();
 }
 
 
-public static void VisualidarFigura(String nombre,float radius,String color) {
+public static void VisualizarFigura(String nombre,float radius,String color) {
 	Color aux = null;
 	
 	if(color.equalsIgnoreCase("Blanco")) {
@@ -215,7 +215,7 @@ public static void VisualidarFigura(String nombre,float radius,String color) {
 	else if(color.equalsIgnoreCase("Naranja")) {
 		aux = Color.orange;
 	}
-	else if(color.equalsIgnoreCase("Rosado")) {
+	else if(color.equalsIgnoreCase("Rosa")) {
 		aux = Color.pink;
 	}
 	else if(color.equalsIgnoreCase("Rojo")) {
@@ -243,7 +243,7 @@ public static void VisualidarFigura(String nombre,float radius,String color) {
 }
 
 public static void main(String[] argv) {
-	VisualidarFigura("Esfera",0.1f,"Verde");
+	VisualizarFigura("Esfera",0.1f,"Verde");
 
 return;
 }
