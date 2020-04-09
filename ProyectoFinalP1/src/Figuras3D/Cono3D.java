@@ -187,7 +187,7 @@ simpleU.addBranchGraph(rootBranchGroup);
 simpleU.getViewingPlatform().setNominalViewingTransform();
 }
 
-public static void VisualidarFigura(String nombre,float radius,float height,String color) {
+public static void VisualizarFigura(String nombre,float radius,float height,String color) {
 	Color aux = null;
 	
 	if(color.equalsIgnoreCase("Blanco")) {
@@ -214,7 +214,7 @@ public static void VisualidarFigura(String nombre,float radius,float height,Stri
 	else if(color.equalsIgnoreCase("Naranja")) {
 		aux = Color.orange;
 	}
-	else if(color.equalsIgnoreCase("Rosado")) {
+	else if(color.equalsIgnoreCase("Rosa")) {
 		aux = Color.pink;
 	}
 	else if(color.equalsIgnoreCase("Rojo")) {
@@ -242,7 +242,7 @@ bc.show();
 }
 
 public static void main(String[] argv) {
-	VisualidarFigura("Cono",0.1f, 0.1f,"Cian");
+	VisualizarFigura("Cono",0.1f, 0.1f,"Cian");
 
 return;
 }

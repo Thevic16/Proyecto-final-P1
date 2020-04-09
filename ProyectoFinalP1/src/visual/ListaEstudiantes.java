@@ -41,14 +41,11 @@ public class ListaEstudiantes extends JDialog {
 	
 	private static Centro centro;
 	private JButton btnEliminar;
-	private JButton btnModificar;
 	private Profesor profesor = null;
 
 	/**
 	 * Launch the application.
 	 */
-
-
 	/**
 	 * Create the dialog.
 	 */
@@ -86,7 +83,6 @@ public class ListaEstudiantes extends JDialog {
 							selectedRow = table.getSelectedRow();
 							if(selectedRow>-1) {
 								btnEliminar.setEnabled(true);
-								btnModificar.setEnabled(true);
 							}
 						}
 					});
@@ -113,28 +109,10 @@ public class ListaEstudiantes extends JDialog {
 						
 						loadEstudiantes(profesor);
 						btnEliminar.setEnabled(false);
-						btnModificar.setEnabled(false);
 						
 						}
 					}
 				});
-				
-				btnModificar = new JButton("Modificar");
-				btnModificar.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						Estudiante aux = profesor.getEstudiantes().get(selectedRow);
-						if(aux != null) {
-							dispose();
-							ModificarUsuario modificarUsuario = new ModificarUsuario(aux);
-							modificarUsuario.setVisible(true);
-						}
-						else {
-							JOptionPane.showMessageDialog(null, "Esta acción no ha podido ser realizada.", "Información", JOptionPane.ERROR_MESSAGE);
-						}
-					}
-				});
-				btnModificar.setEnabled(false);
-				buttonPane.add(btnModificar);
 				btnEliminar.setEnabled(false);
 				buttonPane.add(btnEliminar);
 			}

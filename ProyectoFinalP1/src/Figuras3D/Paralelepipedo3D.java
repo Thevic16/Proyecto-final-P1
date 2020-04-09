@@ -174,7 +174,7 @@ simpleU.addBranchGraph(rootBranchGroup);
 simpleU.getViewingPlatform().setNominalViewingTransform();
 }
 
-public static void VisualidarFigura(String nombre,float x, float y, float z,String color) {
+public static void VisualizarFigura(String nombre,float x, float y, float z,String color) {
 	Color aux = null;
 	
 	if(color.equalsIgnoreCase("Blanco")) {
@@ -201,7 +201,7 @@ public static void VisualidarFigura(String nombre,float x, float y, float z,Stri
 	else if(color.equalsIgnoreCase("Naranja")) {
 		aux = Color.orange;
 	}
-	else if(color.equalsIgnoreCase("Rosado")) {
+	else if(color.equalsIgnoreCase("Rosa")) {
 		aux = Color.pink;
 	}
 	else if(color.equalsIgnoreCase("Rojo")) {
@@ -226,7 +226,7 @@ bc.show();
 }
 
 public static void main(String[] argv) {
-	VisualidarFigura("Paralelepipedo", 0.1f, 0.3f, 0.2f,"Rojo");
+	VisualizarFigura("Paralelepipedo", 0.1f, 0.3f, 0.2f,"Rojo");
 
 return;
 }
