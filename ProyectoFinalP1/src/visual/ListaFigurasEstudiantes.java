@@ -196,5 +196,5 @@ public class ListaFigurasEstudiantes extends JDialog {
         }
     }
 	
-	
+	////
 }
