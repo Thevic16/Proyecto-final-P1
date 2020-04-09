@@ -414,4 +414,28 @@ public class Centro implements Serializable {
 			
 			return aux;			
 		}
+		
+		
+		public Profesor getProfesorByIDEstudiante(String IDEstudiante) {
+			Profesor aux = null;
+			int i = 0;
+			int j =0;
+			
+			
+			while(i<usuarios.size()){
+				if(usuarios.get(i) instanceof Profesor) {
+					while(j<((Profesor) usuarios.get(i)).getEstudiantes().size()){
+						
+						if(IDEstudiante.equals(((Profesor) usuarios.get(i)).getEstudiantes().get(j).getID())) {
+							aux = (Profesor) usuarios.get(i);
+							
+						}
+						j++;
+					}
+				}
+				i++;
+			}
+			
+			return aux;
+		}
 }

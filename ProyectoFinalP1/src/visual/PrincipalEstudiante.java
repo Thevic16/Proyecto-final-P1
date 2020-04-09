@@ -148,6 +148,16 @@ public class PrincipalEstudiante extends JFrame {
 			}
 		});
 		mnNewMenu_1.add(mntmNewMenuItem_4);
+		
+		JMenuItem mntmNewMenuItem_5 = new JMenuItem("Mi profesor");
+		mntmNewMenuItem_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ModificarProfesor modificarProfesor = new ModificarProfesor(centro);
+				modificarProfesor.setModal(true);
+				modificarProfesor.setVisible(true);
+			}
+		});
+		mnNewMenu_1.add(mntmNewMenuItem_5);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
