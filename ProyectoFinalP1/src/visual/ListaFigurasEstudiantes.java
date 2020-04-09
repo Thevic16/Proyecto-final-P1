@@ -1,3 +1,4 @@
+//
 package visual;
 
 import java.awt.BorderLayout;
@@ -48,7 +49,6 @@ public class ListaFigurasEstudiantes extends JDialog {
 	private static JComboBox cbxEstudiantes;
 	
 	private static Centro centro;
-	private JButton btnVista3D;
 	private Profesor profesor = null;
 
 	/**
@@ -87,15 +87,6 @@ public class ListaFigurasEstudiantes extends JDialog {
 					model.setColumnIdentifiers(columnas);
 					table = new JTable();
 					table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-					table.addMouseListener(new MouseAdapter() {
-						@Override
-						public void mouseClicked(MouseEvent e) {
-							selectedRow = table.getSelectedRow();
-							if(selectedRow>-1) {
-								btnVista3D.setEnabled(true);
-							}
-						}
-					});
 					loadFiguras("<Todos>",profesor);
 					scrollPane.setViewportView(table);
 				}
@@ -132,10 +123,6 @@ public class ListaFigurasEstudiantes extends JDialog {
 						dispose();
 					}
 				});
-				
-				btnVista3D = new JButton("Vista 3D");
-				btnVista3D.setEnabled(false);
-				buttonPane.add(btnVista3D);
 				btnCancelar.setActionCommand("Cancel");
 				buttonPane.add(btnCancelar);
 			}
@@ -210,5 +197,5 @@ public class ListaFigurasEstudiantes extends JDialog {
         }
     }
 	
-	
+	////
 }

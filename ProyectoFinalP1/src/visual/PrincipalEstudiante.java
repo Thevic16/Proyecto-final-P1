@@ -1,3 +1,4 @@
+//
 package visual;
 
 import java.awt.BorderLayout;
@@ -125,6 +126,16 @@ public class PrincipalEstudiante extends JFrame {
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem_1);
+		
+		JMenuItem mntmVisualizar = new JMenuItem("Visualizar Figuras");
+		mntmVisualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VisualizarFigura visual = new VisualizarFigura(centroCargado);
+				visual.setModal(true);
+				visual.setVisible(true);
+			}
+		});
+		mnNewMenu.add(mntmVisualizar);
 		
 		JMenu mnNewMenu_1 = new JMenu("Cuenta");
 		menuBar.add(mnNewMenu_1);

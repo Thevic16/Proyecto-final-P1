@@ -1,3 +1,4 @@
+//
 package visual;
 
 import java.awt.BorderLayout;
@@ -73,29 +74,29 @@ public class PrincipalProfesor extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		JMenu mnNewMenu = new JMenu("Figuras");
-		menuBar.add(mnNewMenu);
+		JMenu mnFiguras = new JMenu("Figuras");
+		menuBar.add(mnFiguras);
 		
-		JMenuItem mntmNewMenuItem = new JMenuItem("Crear figura");
-		mntmNewMenuItem.addActionListener(new ActionListener() {
+		JMenuItem mntmCrearFigura = new JMenuItem("Crear figura");
+		mntmCrearFigura.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				CrearFigura crearFigura = new CrearFigura(centro);
 				crearFigura.setModal(true);
 				crearFigura.setVisible(true);
 			}
 		});
-		mnNewMenu.add(mntmNewMenuItem);
+		mnFiguras.add(mntmCrearFigura);
 		JMenu mnEstadisticas = new JMenu("Estad\u00EDstica");
 		menuBar.add(mnEstadisticas);
 		
-		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Figuras por cantidad ");
-		mntmNewMenuItem_2.addActionListener(new ActionListener() {
+		JMenuItem mntmFigurasPorCant = new JMenuItem("Figuras por cantidad ");
+		mntmFigurasPorCant.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				GraficoFigurasCreadas graficoFigurasCreadas = new GraficoFigurasCreadas(centro);
 				graficoFigurasCreadas.setVisible(true);
 			}
 		});
-		mnEstadisticas.add(mntmNewMenuItem_2);
+		mnEstadisticas.add(mntmFigurasPorCant);
 		
 		JMenuItem mntmPromedioAreasFiguras = new JMenuItem("Promedio areas figuras");
 		mntmPromedioAreasFiguras.addActionListener(new ActionListener() {
@@ -116,15 +117,18 @@ public class PrincipalProfesor extends JFrame {
 		});
 		mnEstadisticas.add(mntmPromedioVolumenFiguras);
 		
-		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Listar figuras creadas");
-		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+		JMenuItem mntmFigurasCreadas = new JMenuItem("Listar figuras creadas");
+		mntmFigurasCreadas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				FigurasCreadas figurasCreadas = new FigurasCreadas(centro);
 				figurasCreadas.setModal(true);
 				figurasCreadas.setVisible(true);
 			}
 		});
-		mnNewMenu.add(mntmNewMenuItem_1);
+		mnFiguras.add(mntmFigurasCreadas);
+		
+		JMenuItem mntmNewMenuItem = new JMenuItem("Visualizar Figuras");
+		mnFiguras.add(mntmNewMenuItem);
 		
 		JMenu mnEstudiantes = new JMenu("Estudiantes");
 		menuBar.add(mnEstudiantes);
@@ -146,6 +150,29 @@ public class PrincipalProfesor extends JFrame {
 			}
 		});
 		mnEstudiantes.add(mntmFigurasEstudiantes);
+		
+		JMenu mnCuenta = new JMenu("Cuenta");
+		menuBar.add(mnCuenta);
+		
+		JMenuItem mntmInformaciónCuenta = new JMenuItem("Informaci\u00F3n Cuenta");
+		mntmInformaciónCuenta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				InformacionCuenta informacionCuenta = new InformacionCuenta(centro.getLoginUser());
+				informacionCuenta.setModal(true);
+				informacionCuenta.setVisible(true);
+			}
+		});
+		mnCuenta.add(mntmInformaciónCuenta);
+		
+		JMenuItem mntmModificarCuenta = new JMenuItem("Modificar Cuenta");
+		mntmModificarCuenta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ModificarUsuario modificarUsuario = new ModificarUsuario(centro.getLoginUser());
+				modificarUsuario.setModal(true);
+				modificarUsuario.setVisible(true);
+			}
+		});
+		mnCuenta.add(mntmModificarCuenta);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));

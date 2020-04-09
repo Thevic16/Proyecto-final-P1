@@ -1,3 +1,4 @@
+//
 package logico;
 
 public class Cubo extends Figura {
