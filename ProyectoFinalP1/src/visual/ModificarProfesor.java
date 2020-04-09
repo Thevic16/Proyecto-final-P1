@@ -33,6 +33,7 @@ public class ModificarProfesor extends JDialog {
 	private JComboBox cbxProfesores;
 	private JButton btnSalvar;
 	private static int seleccion = -1;
+	private static int indiceProfesorActual =-1;
 
 	/**
 	 * Launch the application.
@@ -88,7 +89,7 @@ public class ModificarProfesor extends JDialog {
 		cbxProfesores = new JComboBox();
 		cbxProfesores.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(cbxProfesores.getSelectedIndex()==0) {
+				if(cbxProfesores.getSelectedIndex()==0 || cbxProfesores.getSelectedIndex() == indiceProfesorActual) {
 					btnSalvar.setEnabled(false);
 				}
 				else {
@@ -168,13 +169,16 @@ public class ModificarProfesor extends JDialog {
 	
 	private void loadProfesores(Centro centro) {
 		cbxProfesores.removeAllItems();
+		int contador = 1;
 		for (Usuario user : centro.getUsuarios()) {
 			
 			if(user instanceof Profesor) {
-				if(user != centro.getProfesorByIDEstudiante(centro.getLoginUser().getID()) ) {
 					cbxProfesores.addItem(new String(user.getID()+"-"+user.getNombre()));
-				}
-				
+					if(user ==centro.getProfesorByIDEstudiante(centro.getLoginUser().getID())) {
+						indiceProfesorActual = contador;
+						
+					}
+				contador++;
 			}
 
 		}
