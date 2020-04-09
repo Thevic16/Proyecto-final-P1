@@ -139,6 +139,12 @@ public class PrincipalProfesor extends JFrame {
 		mnEstudiantes.add(mntmMisEstudiantes);
 		
 		JMenuItem mntmFigurasEstudiantes = new JMenuItem("Figuras de Estudiantes");
+		mntmFigurasEstudiantes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListaFigurasEstudiantes listaFigurasEstudiantes = new ListaFigurasEstudiantes(centro);
+				listaFigurasEstudiantes.setVisible(true);
+			}
+		});
 		mnEstudiantes.add(mntmFigurasEstudiantes);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
