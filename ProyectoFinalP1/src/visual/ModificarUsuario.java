@@ -51,7 +51,7 @@ public class ModificarUsuario extends JDialog {
 	 */
 	public ModificarUsuario(Usuario user) {
 		this.user = user;
-		setTitle("Registrar");
+		setTitle("Modificar cuenta");
 		setBounds(100, 100, 481, 300);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
@@ -62,7 +62,7 @@ public class ModificarUsuario extends JDialog {
 		
 		JPanel pnlInfoGeneral = new JPanel();
 		pnlInfoGeneral.setBorder(new TitledBorder(null, "Infomaci\u00F3n General", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		pnlInfoGeneral.setBounds(10, 24, 445, 246);
+		pnlInfoGeneral.setBounds(10, 24, 445, 193);
 		contentPanel.add(pnlInfoGeneral);
 		pnlInfoGeneral.setLayout(null);
 		{

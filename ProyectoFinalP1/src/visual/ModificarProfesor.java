@@ -53,7 +53,7 @@ public class ModificarProfesor extends JDialog {
 	 */
 	public ModificarProfesor(Centro centro) {
 		this.centro = centro;
-		setTitle("Registrar");
+		setTitle("Mi profesor");
 		setBounds(100, 100, 510, 208);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
@@ -64,7 +64,7 @@ public class ModificarProfesor extends JDialog {
 		
 		JPanel pnlInfoGeneral = new JPanel();
 		pnlInfoGeneral.setBorder(new TitledBorder(null, "Infomaci\u00F3n General", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		pnlInfoGeneral.setBounds(10, 24, 474, 112);
+		pnlInfoGeneral.setBounds(10, 24, 474, 101);
 		contentPanel.add(pnlInfoGeneral);
 		pnlInfoGeneral.setLayout(null);
 		{
