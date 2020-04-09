@@ -125,6 +125,29 @@ public class PrincipalEstudiante extends JFrame {
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem_1);
+		
+		JMenu mnNewMenu_1 = new JMenu("Cuenta");
+		menuBar.add(mnNewMenu_1);
+		
+		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Informaci\u00F3n cuenta");
+		mntmNewMenuItem_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				InformacionCuenta informacionCuenta = new InformacionCuenta(centro.getLoginUser());
+				informacionCuenta.setModal(true);
+				informacionCuenta.setVisible(true);
+			}
+		});
+		mnNewMenu_1.add(mntmNewMenuItem_3);
+		
+		JMenuItem mntmNewMenuItem_4 = new JMenuItem("Modificar cuenta");
+		mntmNewMenuItem_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ModificarUsuario modificarUsuario = new ModificarUsuario(centro.getLoginUser());
+				modificarUsuario.setModal(true);
+				modificarUsuario.setVisible(true);
+			}
+		});
+		mnNewMenu_1.add(mntmNewMenuItem_4);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
