@@ -224,7 +224,6 @@ public class RegUsuario extends JDialog {
 			JOptionPane.showMessageDialog(null, "Usuario registrado satisfactoriamente!", "Información", JOptionPane.INFORMATION_MESSAGE);
 		    Clean(centro);
 		    btnRegistrar.setEnabled(false);
-		    btnCancelar.setEnabled(false);
 		    cbxProfesores.setSelectedIndex(0);
 		}
 
