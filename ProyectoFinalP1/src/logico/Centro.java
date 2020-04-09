@@ -9,6 +9,7 @@ public class Centro implements Serializable {
 	private ArrayList<Figura>figuras; 
 	private ArrayList<Usuario>usuarios;
 	private int cantUsuarios;
+	private int cantFiguras;
 	private Usuario loginUser;
 	
 	private boolean loginAdmin = false; // si es verdadero se inicio seccion el administrador. 
@@ -22,6 +23,7 @@ public class Centro implements Serializable {
 		this.figuras = new ArrayList<Figura>();
 		this.setUsuarios(new ArrayList<Usuario>());
 		this.cantUsuarios = 0;
+		this.cantFiguras = 0;
 		
 	}
 
@@ -80,6 +82,7 @@ public class Centro implements Serializable {
 	public void insertFigura(Figura figura) {
 		codigoFiguras++;
 		figuras.add(figura);
+		cantFiguras++;
 	}
 	public boolean removeUser(Usuario user) {
 		boolean hecho = true;
@@ -394,5 +397,21 @@ public class Centro implements Serializable {
 
 			
 			return UsuariosByTipo;	
+		}
+		
+		public Figura getFiguraByCode(String code) {
+			Figura aux = null;
+			int i = 0;
+			boolean encontrado = false;
+			
+			while(!encontrado && i < cantFiguras) {
+				if(figuras.get(i).codigo.equalsIgnoreCase(code)) {
+					aux = figuras.get(i);
+					encontrado = true;
+				}
+				i++;
+			}
+			
+			return aux;			
 		}
 }
