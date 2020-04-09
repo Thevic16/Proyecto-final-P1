@@ -130,6 +130,12 @@ public class PrincipalProfesor extends JFrame {
 		menuBar.add(mnEstudiantes);
 		
 		JMenuItem mntmMisEstudiantes = new JMenuItem("Mis Estudiantes");
+		mntmMisEstudiantes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListaEstudiantes listaEstudiantes = new ListaEstudiantes(centro);
+				listaEstudiantes.setVisible(true);
+			}
+		});
 		mnEstudiantes.add(mntmMisEstudiantes);
 		
 		JMenuItem mntmFigurasEstudiantes = new JMenuItem("Figuras de Estudiantes");

@@ -29,7 +29,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
-public class ListarUsuarios extends JDialog {
+public class ListaEstudiantes extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	//lo que se necesita para hacer la tabla.
@@ -38,11 +38,11 @@ public class ListarUsuarios extends JDialog {
 	private static Object[] fila;
 	// hasta aqui.
 	private int selectedRow = -1; // parte de seleccionar
-	private static JComboBox cbxSeleccion;
 	
 	private static Centro centro;
 	private JButton btnEliminar;
 	private JButton btnModificar;
+	private Profesor profesor = null;
 
 	/**
 	 * Launch the application.
@@ -52,8 +52,10 @@ public class ListarUsuarios extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public ListarUsuarios(Centro centro) {
+	public ListaEstudiantes(Centro centro) {
+		setTitle("Mis Estudiantes");
 		this.centro = centro;
+		profesor = (Profesor) centro.getLoginUser();
 		setBounds(100, 100, 662, 368);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
@@ -69,11 +71,11 @@ public class ListarUsuarios extends JDialog {
 			{
 				//tarde de la tabla
 				JScrollPane scrollPane = new JScrollPane();
-				scrollPane.setBounds(6, 49, 610, 227);
+				scrollPane.setBounds(6, 22, 610, 254);
 				scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 				panel.add(scrollPane);
 				{
-					String[] columnas = {"ID","Ocupación","Nombre","Apellido","Cantidad de figuras"};
+					String[] columnas = {"ID","Nombre","Apellido","Cantidad de figuras"};
 					model = new DefaultTableModel();
 					model.setColumnIdentifiers(columnas);
 					table = new JTable();
@@ -92,28 +94,6 @@ public class ListarUsuarios extends JDialog {
 					scrollPane.setViewportView(table);
 				}
 			}
-			
-			cbxSeleccion = new JComboBox();
-			cbxSeleccion.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					int indiceSeleccionado;
-					
-					indiceSeleccionado = cbxSeleccion.getSelectedIndex();
-					
-					if(indiceSeleccionado == 0) {
-						loadUsuarios();
-					}
-					else if(indiceSeleccionado == 1) {
-						loadEstudiantes();
-					}
-					else if(indiceSeleccionado == 2) {
-						loadProfesores();
-					}
-				}
-			});
-			cbxSeleccion.setModel(new DefaultComboBoxModel(new String[] {"<Todos los usuarios>", "Estudiantes", "Profesores"}));
-			cbxSeleccion.setBounds(6, 18, 165, 20);
-			panel.add(cbxSeleccion);
 		}
 		{
 			JPanel buttonPane = new JPanel();
@@ -124,37 +104,14 @@ public class ListarUsuarios extends JDialog {
 				btnEliminar = new JButton("Eliminar");
 				btnEliminar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						int option = JOptionPane.showConfirmDialog(null, "Esta seguro desea eliminar al usuario: "+centro.getUsuarios().get(selectedRow).getNombre()+" "+centro.getUsuarios().get(selectedRow).getApellido(), "Eliminar", JOptionPane.WARNING_MESSAGE);
+						int option = JOptionPane.showConfirmDialog(null, "Esta seguro desea eliminar al estudiante: "+profesor.getEstudiantes().get(selectedRow).getNombre()+" "+profesor.getEstudiantes().get(selectedRow).getApellido(), "Eliminar", JOptionPane.WARNING_MESSAGE);
 						if(option == 0) {
 						JOptionPane.showMessageDialog(null, "Operación Realizada", "Información", JOptionPane.INFORMATION_MESSAGE);
+						Estudiante aux = profesor.getEstudiantes().get(selectedRow);
+						profesor.removeEstudiante(aux);
 						
-						Usuario aux = null;
 						
-						int indiceSeleccionado;
-						
-						indiceSeleccionado = cbxSeleccion.getSelectedIndex();
-						
-						if(indiceSeleccionado == 0) {
-							aux = centro.getUsuarios().get(selectedRow);
-							
-							centro.removeUser(aux);
-							centro.setCantUsuarios(centro.getCantUsuarios()-1);
-						}
-						else if(indiceSeleccionado == 1) {
-							aux = centro.getUsuariosByTipo().get(0).get(selectedRow);
-							
-							centro.removeUser(aux);
-							centro.setCantUsuarios(centro.getCantUsuarios()-1);
-						}
-						else if(indiceSeleccionado == 2) {
-							aux = centro.getUsuariosByTipo().get(1).get(selectedRow);
-							
-							centro.removeUser(aux);
-							centro.setCantUsuarios(centro.getCantUsuarios()-1);
-						}
-						
-					
-						loadUsuarios();
+						loadEstudiantes(profesor);
 						btnEliminar.setEnabled(false);
 						btnModificar.setEnabled(false);
 						
@@ -165,22 +122,7 @@ public class ListarUsuarios extends JDialog {
 				btnModificar = new JButton("Modificar");
 				btnModificar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						Usuario aux = null;
-						
-						int indiceSeleccionado;
-						
-						indiceSeleccionado = cbxSeleccion.getSelectedIndex();
-						
-						if(indiceSeleccionado == 0) {
-							aux = centro.getUsuarios().get(selectedRow);
-						}
-						else if(indiceSeleccionado == 1) {
-							aux = centro.getUsuariosByTipo().get(0).get(selectedRow);
-						}
-						else if(indiceSeleccionado == 2) {
-							aux = centro.getUsuariosByTipo().get(1).get(selectedRow);
-						}
-						
+						Estudiante aux = profesor.getEstudiantes().get(selectedRow);
 						if(aux != null) {
 							dispose();
 							ModificarUsuario modificarUsuario = new ModificarUsuario(aux);
@@ -189,8 +131,6 @@ public class ListarUsuarios extends JDialog {
 						else {
 							JOptionPane.showMessageDialog(null, "Esta acción no ha podido ser realizada.", "Información", JOptionPane.ERROR_MESSAGE);
 						}
-	
-
 					}
 				});
 				btnModificar.setEnabled(false);
@@ -210,57 +150,20 @@ public class ListarUsuarios extends JDialog {
 			}
 		}
 		
-		loadUsuarios();
+		loadEstudiantes(profesor);
 	}
 	
-	public static void loadUsuarios() {
+	
+	public static void loadEstudiantes(Profesor profe) {
 		model.setRowCount(0);
 		fila = new Object[model.getColumnCount()];
-		cbxSeleccion.setSelectedIndex(0);
-		for (Usuario user : centro.getUsuarios()) {
-			fila[0] = user.getID();
-			if(user instanceof Estudiante) {
-				fila[1] = "Estudiante";
-			}
-			else {
-				fila[1] = "Profesor";
-			}
-			fila[2] = user.getNombre();
-			fila[3] = user.getApellido();
-			fila[4] = user.getFiguras().size();
+		for (Estudiante aux : profe.getEstudiantes()) {
+			fila[0] = aux.getID();
+			fila[1] = aux.getNombre();
+			fila[2] = aux.getApellido();
+			fila[3] = aux.getFiguras().size();
 			model.addRow(fila);
 		}
 	}
 	
-	public static void loadEstudiantes() {
-		model.setRowCount(0);
-		fila = new Object[model.getColumnCount()];
-		
-		for (Usuario user : centro.getUsuarios()) {
-			fila[0] = user.getID();
-			if(user instanceof Estudiante) {
-				fila[1] = "Estudiante";
-				fila[2] = user.getNombre();
-				fila[3] = user.getApellido();
-				fila[4] = user.getFiguras().size();
-				model.addRow(fila);
-			}
-		}
-	}
-	
-	public static void loadProfesores() {
-		model.setRowCount(0);
-		fila = new Object[model.getColumnCount()];
-		
-		for (Usuario user : centro.getUsuarios()) {
-			fila[0] = user.getID();
-			if(user instanceof Profesor) {
-				fila[1] = "Profesor";
-				fila[2] = user.getNombre();
-				fila[3] = user.getApellido();
-				fila[4] = user.getFiguras().size();
-				model.addRow(fila);
-			}
-		}
-	}
 }
