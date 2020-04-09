@@ -23,7 +23,7 @@ import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class ModificarUsuario extends JDialog {
+public class InformacionCuenta extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTextField txtPassword;
@@ -49,7 +49,7 @@ public class ModificarUsuario extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public ModificarUsuario(Usuario user) {
+	public InformacionCuenta(Usuario user) {
 		this.user = user;
 		setTitle("Registrar");
 		setBounds(100, 100, 481, 300);
@@ -89,6 +89,7 @@ public class ModificarUsuario extends JDialog {
 		}
 		{
 			txtNombre = new JTextField();
+			txtNombre.setEditable(false);
 			txtNombre.setBounds(88, 64, 266, 20);
 			pnlInfoGeneral.add(txtNombre);
 			txtNombre.setColumns(10);
@@ -100,12 +101,14 @@ public class ModificarUsuario extends JDialog {
 		}
 		{
 			txtApellido = new JTextField();
+			txtApellido.setEditable(false);
 			txtApellido.setBounds(88, 100, 266, 20);
 			pnlInfoGeneral.add(txtApellido);
 			txtApellido.setColumns(10);
 		}
 		{
 			txtPassword = new JTextField();
+			txtPassword.setEditable(false);
 			txtPassword.setBounds(88, 137, 266, 20);
 			pnlInfoGeneral.add(txtPassword);
 			txtPassword.setColumns(10);
@@ -115,25 +118,12 @@ public class ModificarUsuario extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton btnCancelar = new JButton("Cancelar");
+				JButton btnCancelar = new JButton("Cerrar");
 				btnCancelar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						dispose();
 					}
 				});
-				{
-					JButton btnNewButton = new JButton("Salvar");
-					btnNewButton.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent e) {
-							user.setNombre(txtNombre.getText());
-							user.setApellido(txtApellido.getText());
-							user.setPassword(txtPassword.getText());
-							JOptionPane.showMessageDialog(null, "El usuario ha sido modificado correctamente", "Información", JOptionPane.INFORMATION_MESSAGE);
-							LoadUsuario(user); 
-						}
-					});
-					buttonPane.add(btnNewButton);
-				}
 				btnCancelar.setActionCommand("Cancel");
 				buttonPane.add(btnCancelar);
 			}
