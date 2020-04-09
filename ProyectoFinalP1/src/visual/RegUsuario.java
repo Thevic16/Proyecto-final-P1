@@ -177,7 +177,10 @@ public class RegUsuario extends JDialog {
 				btnRegistrar.setEnabled(false);
 				btnRegistrar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						if(rdbtnProfesor.isSelected()) {
+						if(txtNombre.getText().equals("") || txtApellido.getText().equals("") || txtPassword.getText().equals("") ) {
+							JOptionPane.showMessageDialog(null, "Debe llenar todas las casillas para registrarse.", "Error", JOptionPane.ERROR_MESSAGE);
+						}
+						else if(rdbtnProfesor.isSelected()) {
 							Profesor teacher = new Profesor(txtNombre.getText(), txtID.getText(), txtApellido.getText(), txtPassword.getText());
 							insertUsuario(teacher,educativo);
 						}else if(rdbtnEstudiante.isSelected()) {
@@ -219,6 +222,8 @@ public class RegUsuario extends JDialog {
 			educativo.insertUsuario(user);
 			JOptionPane.showMessageDialog(null, "Usuario registrado satisfactoriamente!", "Información", JOptionPane.INFORMATION_MESSAGE);
 		    Clean(centro);
+		    rdbtnEstudiante.setEnabled(false);
+		    rdbtnProfesor.setEnabled(false);
 		}
 
 	}
