@@ -1,4 +1,3 @@
-//
 package visual;
 
 import java.awt.BorderLayout;
@@ -130,7 +129,7 @@ public class PrincipalEstudiante extends JFrame {
 		JMenuItem mntmVisualizar = new JMenuItem("Visualizar Figuras");
 		mntmVisualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VisualizarFigura visual = new VisualizarFigura(centroCargado);
+				VisualizarFigura visual = new VisualizarFigura(centro);
 				visual.setModal(true);
 				visual.setVisible(true);
 			}

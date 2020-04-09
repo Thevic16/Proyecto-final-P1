@@ -1,4 +1,3 @@
-//
 package visual;
 
 import java.awt.BorderLayout;
@@ -330,7 +329,9 @@ public class CrearFigura extends JDialog {
 							aux = new Paralelepipedo(codigo, longitud, altura, anchura);
 						}
 						centro.insertFigura(aux);
-						centro.getLoginUser().insertFigura(aux);
+
+
+						
 						JOptionPane.showMessageDialog(null, "La figura se ha creado correctamente.", "Información", JOptionPane.INFORMATION_MESSAGE);
 						clean();
 					}

@@ -1,4 +1,3 @@
-//
 package visual;
 
 import java.awt.BorderLayout;
@@ -129,9 +128,10 @@ public class VisualizarFigura extends JDialog {
 		contentPanel.add(pnlListFiguras);
 		pnlListFiguras.setLayout(null);
 		
+		listFiguraModel = new DefaultListModel<String>();
 		listFigura = new JList();
 		listFigura.setBounds(10, 21, 169, 208);
-		//loadFiguras(educativo);
+		loadFiguras(educativo);
 		
 		pnlListFiguras.add(listFigura);
 		{

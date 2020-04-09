@@ -1,4 +1,3 @@
-//
 package visual;
 
 import java.awt.BorderLayout;
@@ -127,8 +126,16 @@ public class PrincipalProfesor extends JFrame {
 		});
 		mnFiguras.add(mntmFigurasCreadas);
 		
-		JMenuItem mntmNewMenuItem = new JMenuItem("Visualizar Figuras");
-		mnFiguras.add(mntmNewMenuItem);
+		JMenuItem mntmVisualizar = new JMenuItem("Visualizar Figuras");
+		mntmVisualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VisualizarFigura visual = new VisualizarFigura(centro);
+				visual.setModal(true);
+				visual.setVisible(true);
+				
+			}
+		});
+		mnFiguras.add(mntmVisualizar);
 		
 		JMenu mnEstudiantes = new JMenu("Estudiantes");
 		menuBar.add(mnEstudiantes);
