@@ -45,6 +45,8 @@ protected SimpleUniverse simpleU;
 * The root BranchGroup Object.
 */
 protected BranchGroup rootBranchGroup;
+private Dimension dim = null; // para ajustar el tamaño de la ventana
+
 
 /**
 * Constructor that consturcts the window with the given name.
@@ -57,7 +59,12 @@ public Cilindro3D(String name) {
 //with the given name
 super(name);
 
-
+//setLocationRelativeTo(null);
+//tamano de la ventana.
+//tamano de la ventana.dim = super.getToolkit().getScreenSize();
+dim = super.getToolkit().getScreenSize();
+super.setSize(dim.width, (dim.height-50));
+setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //Perform the initial setup, just once
 initial_setup();
 
@@ -187,15 +194,54 @@ simpleU.getViewingPlatform().setNominalViewingTransform();
 
 
 
-public static void VisualidarFigura(String nombre,float radius,float height) {
+public static void VisualidarFigura(String nombre,float radius,float height,String color) {
+	
+	Color aux = null;
+	
+	if(color.equalsIgnoreCase("Blanco")) {
+		aux = Color.white;
+	}
+	else if(color.equalsIgnoreCase("Azul")) {
+		aux = Color.blue;
+	}
+	else if(color.equalsIgnoreCase("Cian")) {
+		aux = Color.cyan;
+	}
+	else if(color.equalsIgnoreCase("Gris")) {
+		aux = Color.gray;
+	}
+	else if(color.equalsIgnoreCase("Gris claro")) {
+		aux = Color.lightGray;
+	}
+	else if(color.equalsIgnoreCase("Verde")) {
+		aux = Color.green;
+	}
+	else if(color.equalsIgnoreCase("Magenta")) {
+		aux = Color.magenta;
+	}
+	else if(color.equalsIgnoreCase("Naranja")) {
+		aux = Color.orange;
+	}
+	else if(color.equalsIgnoreCase("Rosado")) {
+		aux = Color.pink;
+	}
+	else if(color.equalsIgnoreCase("Rojo")) {
+		aux = Color.red;
+	}
+	else if(color.equalsIgnoreCase("Amarillo")) {
+		aux = Color.yellow;
+	}
+	else {
+		aux = Color.white; // Por defecto
+	}
+	
 	Cilindro3D bc = new Cilindro3D(nombre);
-
-	bc.setSize(250, 250);
-	bc.addCylinder(radius,height,new Color3f(1, 0, 0), new Color3f(1, 0, 0));
+	//bc.setSize(700, 700);
+	bc.addCylinder(radius,height,new Color3f(aux), new Color3f(aux));
 
 
 	bc.addDirectionalLight(new Vector3f(0f, 0f, -1),
-	new Color3f(1f, 1f, 0f));
+	new Color3f(aux));
 	bc.finalise();
 
 	bc.show();
@@ -207,7 +253,8 @@ public static void VisualidarFigura(String nombre,float radius,float height) {
 
 
 public static void main(String[] argv) {
-	VisualidarFigura("Cilindro",0.1f, 0.1f);
+	VisualidarFigura("Cilindro",0.1f, 0.1f,"Amarillo");
+	
 
 return;
 }
