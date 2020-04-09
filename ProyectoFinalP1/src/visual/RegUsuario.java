@@ -36,6 +36,7 @@ public class RegUsuario extends JDialog {
 	private JRadioButton rdbtnProfesor;
 	private JButton btnRegistrar;
 	private JComboBox cbxProfesores;
+	private JButton btnCancelar;
 
 	/**
 	 * Launch the application.
@@ -199,7 +200,7 @@ public class RegUsuario extends JDialog {
 				getRootPane().setDefaultButton(btnRegistrar);
 			}
 			{
-				JButton btnCancelar = new JButton("Cancelar");
+				btnCancelar = new JButton("Cancelar");
 				btnCancelar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						dispose();
@@ -222,8 +223,9 @@ public class RegUsuario extends JDialog {
 			educativo.insertUsuario(user);
 			JOptionPane.showMessageDialog(null, "Usuario registrado satisfactoriamente!", "Información", JOptionPane.INFORMATION_MESSAGE);
 		    Clean(centro);
-		    rdbtnEstudiante.setEnabled(false);
-		    rdbtnProfesor.setEnabled(false);
+		    btnRegistrar.setEnabled(false);
+		    btnCancelar.setEnabled(false);
+		    cbxProfesores.setSelectedIndex(0);
 		}
 
 	}
