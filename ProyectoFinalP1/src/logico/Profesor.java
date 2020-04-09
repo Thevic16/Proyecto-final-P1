@@ -23,6 +23,9 @@ public class Profesor extends Usuario {
 	public void insertarEstudiante(Estudiante estudiante) {
 		estudiantes.add(estudiante);
 	}
+	public void eliminarEstudiante(Estudiante estudiante) {
+		estudiantes.remove(estudiante);
+	}
 	
 	
 	public Estudiante buscarEstudianteByID(String ID) {

@@ -30,6 +30,9 @@ public class ModificarProfesor extends JDialog {
 	private final JPanel contentPanel = new JPanel();
 	private JTextField txtProfesor;
 	private static Centro centro;
+	private JComboBox cbxProfesores;
+	private JButton btnSalvar;
+	private static int seleccion = -1;
 
 	/**
 	 * Launch the application.
@@ -82,7 +85,18 @@ public class ModificarProfesor extends JDialog {
 			pnlInfoGeneral.add(lblNombre);
 		}
 		
-		JComboBox cbxProfesores = new JComboBox();
+		cbxProfesores = new JComboBox();
+		cbxProfesores.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(cbxProfesores.getSelectedIndex()==0) {
+					btnSalvar.setEnabled(false);
+				}
+				else {
+					btnSalvar.setEnabled(true);
+				}
+				
+			}
+		});
 		cbxProfesores.setBounds(164, 64, 266, 20);
 		pnlInfoGeneral.add(cbxProfesores);
 		{
@@ -97,21 +111,45 @@ public class ModificarProfesor extends JDialog {
 					}
 				});
 				{
-					JButton btnNewButton = new JButton("Salvar");
-					btnNewButton.addActionListener(new ActionListener() {
+					btnSalvar = new JButton("Salvar");
+					btnSalvar.setEnabled(false);
+					btnSalvar.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
+							seleccion = cbxProfesores.getSelectedIndex()-1;
+							Profesor aux =centro.getProfesorByIDEstudiante(centro.getLoginUser().getID());
 
-							JOptionPane.showMessageDialog(null, "El usuario ha sido modificado correctamente", "Información", JOptionPane.INFORMATION_MESSAGE);
-							LoadUsuario(centro); 
+							int option = JOptionPane.showConfirmDialog(null, "Esta seguro desea cambiar de profesor: ", "Cambio", JOptionPane.WARNING_MESSAGE);
+							if(option == 0) {
+							if(seleccion >=0) {
+								
+								if(aux == null) {
+									
+									((Profesor) centro.getUsuariosByTipo().get(1).get(seleccion)).insertarEstudiante((Estudiante) centro.getLoginUser());
+								}
+								else {
+									Profesor auxProfe = centro.getProfesorByIDEstudiante(centro.getLoginUser().getID());
+									auxProfe.eliminarEstudiante((Estudiante) centro.getLoginUser());
+									
+									((Profesor) centro.getUsuariosByTipo().get(1).get(seleccion)).insertarEstudiante((Estudiante) centro.getLoginUser());
+								}
+								
+								
+								JOptionPane.showMessageDialog(null, "La acción se ha ejecutado correctamente", "Información", JOptionPane.INFORMATION_MESSAGE); 
+							}
+							}
+							
+							JOptionPane.showMessageDialog(null, "Ahora es parte del grupo de"+" "+((Profesor) centro.getUsuariosByTipo().get(1).get(seleccion)).getNombre(), "Información", JOptionPane.INFORMATION_MESSAGE); 
+							dispose();
 						}
 					});
-					buttonPane.add(btnNewButton);
+					buttonPane.add(btnSalvar);
 				}
 				btnCancelar.setActionCommand("Cancel");
 				buttonPane.add(btnCancelar);
 			}
 		}
 		 LoadUsuario(centro); 
+		 loadProfesores(centro);
 	}
 	
 	
@@ -126,5 +164,21 @@ public class ModificarProfesor extends JDialog {
 			txtProfesor.setText("No tiene profesor en este momento.");
 		}
 
+	}
+	
+	private void loadProfesores(Centro centro) {
+		cbxProfesores.removeAllItems();
+		for (Usuario user : centro.getUsuarios()) {
+			
+			if(user instanceof Profesor) {
+				if(user != centro.getProfesorByIDEstudiante(centro.getLoginUser().getID()) ) {
+					cbxProfesores.addItem(new String(user.getID()+"-"+user.getNombre()));
+				}
+				
+			}
+
+		}
+		cbxProfesores.insertItemAt(new String("<Profesores>"),0);
+		cbxProfesores.setSelectedIndex(0);
 	}
 }

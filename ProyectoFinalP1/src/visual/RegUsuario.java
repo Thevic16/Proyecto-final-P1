@@ -167,7 +167,7 @@ public class RegUsuario extends JDialog {
 			}
 		});
 
-		cbxProfesores.setBounds(365, 28, 108, 20);
+		cbxProfesores.setBounds(345, 28, 128, 20);
 		pnlInfoGeneral.add(cbxProfesores);
 		{
 			JPanel buttonPane = new JPanel();
@@ -223,8 +223,6 @@ public class RegUsuario extends JDialog {
 			educativo.insertUsuario(user);
 			JOptionPane.showMessageDialog(null, "Usuario registrado satisfactoriamente!", "Información", JOptionPane.INFORMATION_MESSAGE);
 		    Clean(centro);
-		    btnRegistrar.setEnabled(false);
-		    btnCancelar.setEnabled(false);
 		    cbxProfesores.setSelectedIndex(0);
 		}
 
@@ -235,11 +233,11 @@ public class RegUsuario extends JDialog {
 		for (Usuario user : centro.getUsuarios()) {
 			
 			if(user instanceof Profesor) {
-				cbxProfesores.addItem(new String(user.getID()));
+				cbxProfesores.addItem(new String(user.getID()+"-"+user.getNombre()));
 			}
 
 		}
-		cbxProfesores.insertItemAt(new String("<Seleccione>"),0);
+		cbxProfesores.insertItemAt(new String("<Profesores>"),0);
 		cbxProfesores.setSelectedIndex(0);
 	}
 	
@@ -250,9 +248,16 @@ public class RegUsuario extends JDialog {
 			txtID.setText("P-"+centro.getUsuarios().size());
 		}
 		else {
-			txtID.setText("P-"+centro.getUsuarios().size());
+			txtID.setText("E-"+centro.getUsuarios().size());
 		}
 
 		txtPassword.setText("");
+		
+		if(rdbtnProfesor.isSelected()) {
+		    btnRegistrar.setEnabled(true);
+		}
+		else {
+			btnRegistrar.setEnabled(false);
+		}
 	}
 }
