@@ -126,6 +126,9 @@ public class PrincipalProfesor extends JFrame {
 		});
 		mnFiguras.add(mntmFigurasCreadas);
 		
+		JMenuItem mntmNewMenuItem = new JMenuItem("Visualizar Figuras");
+		mnFiguras.add(mntmNewMenuItem);
+		
 		JMenu mnEstudiantes = new JMenu("Estudiantes");
 		menuBar.add(mnEstudiantes);
 		
